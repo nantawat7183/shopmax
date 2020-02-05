@@ -49,9 +49,9 @@
                 
                 
                 <li><a href="edit_detail_menu.php">เเก้ไขเมนู</a></li>
-                <li><a href="#">เเก้ไขโปรโมชั่น</a></li>
+                <!-- <li><a href="#">เเก้ไขโปรโมชั่น</a></li> -->
                 <li><a href="edit_status.php">เเก้ไขสถานะสินค้า</a></li>
-                
+                <li><a href="order_show_addmin.php">รายการสั่งซื้อ</a></li>                
                 <li><a href="logout.php">ออก</a></li>
               </ul>
             </nav>

@@ -9,6 +9,9 @@ while ($objResult = mysqli_fetch_array($objQuery)){
   $pay_id = $objResult["Pay_id"];
   $Pay_date = $objResult["Pay_date"];
   $Pay_img = $objResult["Pay_img"];
+  $Or_id = $objResult["Or_id"];
+  $Pay_bank = $objResult["Pay_bank"];
+
 }
 ?>
 
@@ -77,7 +80,12 @@ while ($objResult = mysqli_fetch_array($objQuery)){
              <div class="p-3 p-lg-5 border">
               <div class="form-group row">
                 <div class="col-md-8">
-                  <label for="Pro_id" class="text-black">วันที่ในการชำระเงิน <span class="text-danger">*</span></label>
+
+
+                  <label for="Pro_id" class="text-black">รหัสการสั่งซื้อ:<?php echo $Or_id ?> <span class="text-danger"></span></label><br>
+                  <label for="Pro_id" class="text-black">ชำระเงินบัญชี:<?php echo $Pay_bank ?> <span class="text-danger"></span></label><br>
+
+                  <label for="Pro_id" class="text-black">วันที่ในการชำระเงิน <span class="text-danger"></span></label>
                   <h4><?php echo $Pay_date?></h4>
                 </div>
               </div><br>
@@ -95,8 +103,8 @@ while ($objResult = mysqli_fetch_array($objQuery)){
                $Or_id = $_GET['Or_id'];
                $strSQL = "SELECT * FROM `order` WHERE Or_id= $Or_id";
                $objQuery = mysqli_query($conn, $strSQL);  
-                 $status="ยังไม่ชำระเงิน";
-               while ($objResult = mysqli_fetch_array($objQuery)){
+                 $status="0";
+               if ($objResult = mysqli_fetch_array($objQuery)){
                  if($objResult['status']==0){
                   $status="ยังไม่ชำระเงิน";
                 }else if($objResult['status']==1){
@@ -114,9 +122,11 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
 
               } ?>
-
-
-              <span><<?php  echo $status  ?></span>
+              <label>การส่ง:</label>
+              <span><?php  echo $objResult['Deliver_method'] ?></span><br>  
+              <label>สถานะ:</label>
+              <span><?php  echo $status ?></span>
+              <br>
 
 
 
@@ -129,6 +139,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
                   <div class="col-md-6">
                     <label for="Pro_id" class="text-black">เเก้ไขสถานะ <span class="text-danger">*</span></label>
                     <select id="status" name="status" class="form-control" >
+                      <option value="0" <?php if($objResult['status']=="0")echo "selected"?> >ยังไม่ชำระเงิน</option>
                       <option value="1" <?php if($objResult['status']=="1")echo "selected"?> >กำลังตรวจสอบการชำระเงิน</option>
                       <option value="2" <?php if($objResult['status']=="2")echo "selected"?>>ชำระเงินเเล้ว</option>
                       <option value="3" <?php if($objResult['status']=="3")echo "selected"?>>กำลังรอการจัดส่ง</option>

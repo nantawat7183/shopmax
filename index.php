@@ -109,10 +109,10 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12 mb-0"><a href="index.php">หน้าหลัก</a> <span class="mx-2 mb-0">/</div>
+            </div>
           </div>
         </div>
-      </div>
-      
+
 
 
 
@@ -168,7 +168,7 @@
                 </a>
                 <h2 class="item-title">รหัสสินค้า:<?php echo $Pro_id ?></a></h2>
                 <h2 class="item-title"><?php echo $Pro_name ?></a></h2>
-                <strong class="item-price">ราคา: <?php echo $Pro_price ?></strong>
+                <strong class="item-price">ราคา: <?php echo $Pro_price ?>บาท/100กรัม</strong>
                 <div class="star-rating">
                   <span class="icon-star2 text-warning"></span>
                   <span class="icon-star2 text-warning"></span>
@@ -185,27 +185,29 @@
             ?>
           </div>
         </div>
-        <?php
-        $objQuery = mysqli_query($conn, $strSQL);
-        $Pro_type_pack ='1';
-        while ($objResult = mysqli_fetch_array($objQuery)){
-          if($objResult['Pro_type']==$Pro_type_pack){
-            $Pro_id = $objResult["Pro_id"];
-            $Pro_name = $objResult["Pro_name"];
-            $Pro_price = $objResult["Pro_price"];
-            $Pro_amount = $objResult["Pro_amount"];
-            $Pro_detail = $objResult["Pro_detail"];
-            $Pro_property = $objResult["Pro_property"];
-            $Pro_img = $objResult["Pro_img"];
-            ?>
 
-            <div class="site-section">
-              <div class="container">
-                <div class="title-section mb-12">
-                  <h2 class="text-uppercase"><span class="d-block">เเพ็คเกจ</span></h2>
-                </div>
-                <br><br>
-                <div class="row align-items-stretch">
+        <div class="site-section">
+          <div class="container">
+            <div class="title-section mb-12">
+              <h2 class="text-uppercase"><span class="d-block">เเพ็คเกจ</span></h2>
+            </div>
+            <br><br>
+            <div class="row align-items-stretch">
+              <?php
+              $objQuery = mysqli_query($conn, $strSQL);
+              $Pro_type_pack ='1';
+              while ($objResult = mysqli_fetch_array($objQuery)){
+                if($objResult['Pro_type']==$Pro_type_pack){
+                  $Pro_id = $objResult["Pro_id"];
+                  $Pro_name = $objResult["Pro_name"];
+                  $Pro_price = $objResult["Pro_price"];
+                  $Pro_amount = $objResult["Pro_amount"];
+                  $Pro_detail = $objResult["Pro_detail"];
+                  $Pro_property = $objResult["Pro_property"];
+                  $Pro_img = $objResult["Pro_img"];
+                  ?>
+
+
 
                   <div class="col-lg-3 col-md-6 item-entry mb-3">
                     <a href="test.php?Pro_id=<?php echo $Pro_id ?>" class="product-item md-height bg-gray d-block">
@@ -213,7 +215,7 @@
                     </a>
                     <h2 class="item-title">รหัสสินค้า:<?php echo $Pro_id ?></a></h2>
                     <h2 class="item-title"><?php echo $Pro_name ?></a></h2>
-                    <strong class="item-price">ราคา: <?php echo $Pro_price ?></strong>
+                    <strong class="item-price">ราคา: <?php echo $Pro_price ?>บาท/500กรัม</strong>
                     <div class="star-rating">
                       <span class="icon-star2 text-warning"></span>
                       <span class="icon-star2 text-warning"></span>
@@ -226,13 +228,15 @@
                     </span>
                   </div>
 
-                </div>
+
+
+                <?php }}
+                ?>
               </div>
             </div>
-          <?php }}
-          ?>
+          </div>
 
-      
+
 
 
 
@@ -240,19 +244,19 @@
             <div class="container">
               <div class="row">
                 <div class="title-section mb-5 col-12">
-                  <h2 class="text-uppercase">สินค้า</h2>
+                  <h2 class="text-uppercase">ความรู้สนใจ</h2>
                 </div>
               </div>
               <div class="row align-items-stretch ">
                 <div class="col-lg-6">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="#" class="product-category bg-light" style=" color: #FFA500";>Food <span style=" color:#808080">เมนูจากผัก</span></a>
+                    <a href="menu_pro.php" class="product-category bg-light" style=" color: #FFA500";>Food <span style=" color:#808080">เมนูจากผัก</span></a>
                     <img src="images/j1.jpg" alt="Image" class="img-fluid">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="#" class="product-category bg-light" style=" color: #FFA500";>Prototype <span style=" color:#808080">คุณสมบัติ</span></a>
+                    <a href="Property.php" class="product-category bg-light" style=" color: #FFA500";>Prototype <span style=" color:#808080">คุณสมบัติ</span></a>
                     <img src="images/vegan.jpg" alt="Image" class="img-fluid">
                   </div>
                 </div>
@@ -260,95 +264,95 @@
             </div>
           </div>
 
-         
 
 
 
 
 
-              <div class="row">
 
-               <div class="col-md-2 column productbox">               
-                <div class="producttitle"></div>
-              </div>
+          <div class="row">
 
-
-
-
-
-            </div>
+           <div class="col-md-2 column productbox">               
+            <div class="producttitle"></div>
           </div>
+
+
+
+
+
         </div>
       </div>
     </div>
-    <!-- </div> -->
   </div>
+</div>
+<!-- </div> -->
+</div>
 
 
-  <footer class="site-footer custom-border-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-          <h3 class="footer-heading mb-4">OUR SHOP</h3>
-          <a href="#" class="block-6">
-            <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-            <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-            <p>Open now  &mdash;  April 20, 2019</p>
-          </a>
-        </div>
-        <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="footer-heading mb-4">Quick Links</h3>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Sell online</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Shopping cart</a></li>
-                <li><a href="#">Store builder</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Mobile commerce</a></li>
-                <li><a href="#">Dropshipping</a></li>
-                <li><a href="#">Website development</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Point of sale</a></li>
-                <li><a href="#">Hardware</a></li>
-                <li><a href="#">Software</a></li>
-              </ul>
-            </div>
+<footer class="site-footer custom-border-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+        <h3 class="footer-heading mb-4">OUR SHOP</h3>
+        <a href="#" class="block-6">
+          <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
+          <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
+          <p>Open now  &mdash;  April 20, 2019</p>
+        </a>
+      </div>
+      <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="footer-heading mb-4">Quick Links</h3>
           </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="block-5 mb-5">
-            <h3 class="footer-heading mb-4">Contact Info</h3>
+          <div class="col-md-6 col-lg-4">
             <ul class="list-unstyled">
-              <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-              <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-              <li class="email">n.kanrutai@kkumail.com</li>
+              <li><a href="#">Sell online</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Shopping cart</a></li>
+              <li><a href="#">Store builder</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <ul class="list-unstyled">
+              <li><a href="#">Mobile commerce</a></li>
+              <li><a href="#">Dropshipping</a></li>
+              <li><a href="#">Website development</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <ul class="list-unstyled">
+              <li><a href="#">Point of sale</a></li>
+              <li><a href="#">Hardware</a></li>
+              <li><a href="#">Software</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="row pt-5 mt-5 text-center">
-        <div class="col-md-12">
-          <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </p>
-        </div>
 
+      <div class="col-md-6 col-lg-3">
+        <div class="block-5 mb-5">
+          <h3 class="footer-heading mb-4">Contact Info</h3>
+          <ul class="list-unstyled">
+            <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
+            <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
+            <li class="email">n.kanrutai@kkumail.com</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="row pt-5 mt-5 text-center">
+      <div class="col-md-12">
+        <p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+      </div>
+
+    </div>
+  </div>
+</footer>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

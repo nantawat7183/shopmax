@@ -111,6 +111,7 @@
                             <th class="product-thumbnail">ชื่อสินค้า</th>
                             <th class="product-name">รูปภาพ</th> 
                             <th class="product-price">จำนวนสินค้า</th>
+                             <th class="product-price">น้ำหนัก</th>
                             <th class="product-price">เเก้ไข</th>
                             <th class="product-quantity">ลบ</th>
 
@@ -129,6 +130,7 @@
                          echo "  <td><img style='height: 50px; width: 50px; margin:0px;'class='img-product' src=" . " ' " . $row['6'] . " ' " . "</td>";
                 // echo "  <td>" . $row['2'] ."บาท"." </td>";
                          echo "  <td>" . $row['3'] . "</td>";
+                          echo "  <td>" . $row['8'] . ".กรัม</td>";
                          echo "  <td><button class=button1 ><a href='Edit2_product.php?Pro_id=".$row['0']."'>เเก้ไข</a></button></td>";
                          echo "  <td><button class=button1 ><a href='delete_to_product.php?Pro_id=".$row['0']."'>ลบ</a></button></td>";
                          echo "</tr>";

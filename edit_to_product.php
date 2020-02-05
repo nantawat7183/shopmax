@@ -13,6 +13,7 @@
       $Pro_amount    =  $_POST['Pro_amount'];
       $Pro_detail   = $_POST['Pro_detail'];
       $Pro_property    =  $_POST['Pro_property'];
+      $Pro_weight    =  $_POST['Pro_weight'];
              
                
       $sql = "UPDATE product SET      
@@ -20,7 +21,9 @@
       Pro_price   = '$Pro_price',
       Pro_amount    = '$Pro_amount',
       Pro_detail   = '$Pro_detail',
-      Pro_property    = '$Pro_property'
+      Pro_property    = '$Pro_property',
+      Pro_weight    = '$Pro_weight'
+
       WHERE   Pro_id = '$Pro_id'";
       echo $sql;
 

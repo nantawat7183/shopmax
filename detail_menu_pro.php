@@ -1,5 +1,5 @@
 <?php include "connectdb.php";?>
-<?php include "check_session.php"; ?>
+
 <?php
 $Pro_id = $_GET['Pro_id'];
 $strSQL =  "SELECT * FROM menu INNER JOIN product ON menu.Pro_id = product.Pro_id WHERE menu.Pro_id = $Pro_id";
@@ -98,7 +98,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
         <div class="custom-border-bottom py-3">
           <div class="container">
             <div class="row">
-              <div class="col-md-12 mb-0"><a href="index.html">หน้าหลัก</a> <span class="mx-2 mb-0">/</span> <a href="shop.html">เมนู</a><span class="mx-2 mb-0">/</span><strong class="text-black">รายการเมนู</strong></div>
+             <div class="col-md-12 mb-0"><a href="index.php">หน้าหลัก</a> <span class="mx-2 mb-0">/</span> <a href="menu_pro.php">ทำอาหาร</a> <span class="mx-2 mb-0">/</span><strong class="text-black">รายการอาหาร</strong></div>
             </div>
           </div>
         </div>

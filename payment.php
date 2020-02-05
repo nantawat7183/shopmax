@@ -120,14 +120,14 @@
 
 
 
-
-<div class="custom-border-bottom py-3">
+<div class="bg-light py-3">
   <div class="container">
     <div class="row">
       <div class="col-md-12 mb-0"><a href="index.html">หน้าหลัก</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">ชำระเงิน</strong></div>
     </div>
   </div>
 </div>
+
 
 
 
@@ -156,31 +156,31 @@
           <div class="form-group">
             <label for="concept" class="col-sm-3 control-label">หมายเลขการสั่งซื้อ</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" id="Order_id" name="Order_id" required>
+              <input type="number" class="form-control" id="Order_id" name="Order_id" value="" required>
             </div>
           </div>
           <div class="form-group">
             <label for="concept" class="col-sm-3 control-label">ยอดเงินที่โอน</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" id="Pay_total" name="Pay_total" required>
+              <input type="number" class="form-control" id="Pay_total" name="Pay_total" value="" required>
             </div>
           </div>
           <div class="form-group">
             <label for="concept" class="col-sm-3 control-label">ชื่อ-นามสกุล</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="User_name" name="User_name" required>
+              <input type="text" class="form-control" id="User_name" name="User_name" value="" required>
             </div>
           </div>
           <div class="form-group">
             <label for="description" class="col-sm-3 control-label">อีเมล์</label>
             <div class="col-sm-9">
-              <input type="email" class="form-control" id="Pay_email" name="Pay_email" required>
+              <input type="email" class="form-control" id="Pay_email" name="Pay_email" value="" required>
             </div>
           </div> 
           <div class="form-group">
             <label for="description" class="col-sm-3 control-label">เบอร์โทรศัพท์</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" id="Pay_phon" name="Pay_phon" required>
+              <input type="number" class="form-control" id="Pay_phon" name="Pay_phon" value="" required>
             </div>
           </div> 
 
@@ -190,11 +190,11 @@
             <div class="col-sm-9">
               <select class="form-control" id="Pay_bank" name="Pay_bank" required>
                 <option></option>
-                <option>กรุงไทย</option>
-                <option>กสิกร</option>
-                <option>กรุงศรี</option>
-                <option>ออมสิน</option>
-                <option>ทหารไทย</option>
+                <option>กรุงไทย 123-456-78 สาขาขอนเเก่น</option>
+                <option>กสิกร 123-456-78 สาขาขอนเเก่น</option>
+                <option>กรุงศรี 123-456-78 สาขาขอนเเก่น</option>
+                <option>ออมสิน 123-456-78 สาขาขอนเเก่น</option>
+                <option>ทหารไทย123-456-78 สาขาขอนเเก่น</option>
 
 
               </select>

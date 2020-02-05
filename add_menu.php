@@ -70,7 +70,8 @@
                 <?php 
 
                 $strSQL = "SELECT * FROM product";
-                $objQuery = mysqli_query($conn, $strSQL);                    
+                $objQuery = mysqli_query($conn, $strSQL); 
+                                
                 ?>
                 <div class="form-group row">
                   <div class="col-md-6">
@@ -86,8 +87,8 @@
                       $Pro_property = $objResult["Pro_property"];
                       $Pro_img = $objResult["Pro_img"];
                     ?>
-                    <option value=<?php echo $Pro_id ?>><?php echo $Pro_name ?></option>
-                  <?php }?>
+                    <option value=<?php echo $Pro_id ?>><?php if ($objResult['Pro_type']==0){ echo $Pro_name ; ?></option>
+                  <?php }}?>
                 </select>
               </div>
             </div>
@@ -135,8 +136,8 @@
                 
                 <div class="form-group">
                   <div class="col-sm-8 text-right ">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="alert('คุณได้เเก้ไขข้อมูลเเล้ว')" style="margin-left: 150px">
-                    <span class="glyphicon glyphicon-plus"></span> เพิ่มสินค้า
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="alert('บันทึกเรียบร้อยเเล้ว')" style="margin-left: 150px">
+                    <span class="glyphicon glyphicon-plus"></span> เพิ่มรายการอาหาร
                   </button>
                 </div>
               </div>

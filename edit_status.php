@@ -107,7 +107,7 @@
           
           <?php
           
-          $strSQL =  "SELECT * FROM payment INNER JOIN `order` ON payment.Or_id =payment.Or_id ";
+          $strSQL =  "SELECT * FROM payment ,`order` where `order`.Or_id = payment.Or_id order by Pay_id desc";
           $objQuery = mysqli_query($conn, $strSQL);  
           while ($objResult = mysqli_fetch_array($objQuery)){
             $Or_id = $objResult["Or_id"];

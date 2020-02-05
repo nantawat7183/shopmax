@@ -57,7 +57,7 @@ echo "<!DOCTYPE html>
 		$time = date("H:i:s");
 
 		
-	echo "<meta http-equiv='refresh' content='1;URL=Edit_product.php'>";
+	echo "<meta http-equiv='refresh' content='1;URL=order_show_addmin.php'>";
 	echo "</html>";
 }
 else
@@ -83,7 +83,7 @@ else
 		$time = date("H:i:s");
 
 	// echo "<meta http-equiv='refresh' content='1;URL=shop.php'>";
-		header("Location: shop.php");
+		header("Location: index.php");
 }
 }
 ?>

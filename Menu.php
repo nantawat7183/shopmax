@@ -36,6 +36,7 @@ if (!isset($_SESSION)) {
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
+                
                 <li ><!-- class="has-children "> -->
                   <a href="index.php">หน้าหลัก</a>
                  <!--  <ul class="dropdown">
@@ -49,12 +50,12 @@ if (!isset($_SESSION)) {
                   </ul> -->
                 </li>
                 
-                <li><a href="shop.php">สั่งซื้อ</a></li>
+                <li><a href="shop.php" >สั่งซื้อ</a></li>
                 
                 
-                <li><a href="menu_pro.php">เมนู</a></li>
-                <li><a href="Property.php">สรรพคุณ</a></li>
-                <li><a href="#">โปรโมชั่น</a></li>
+               <!--  <li><a href="menu_pro.php">วิธีทำอาหาร</a></li>
+                <li><a href="Property.php">สรรพคุณ</a></li> -->
+               <!--  <li><a href="#">โปรโมชั่น</a></li> -->
                 <?php 
                 if (isset($_SESSION["ses_userid"])) {?>
                 <li><a href="status.php">ติดตามสินค้า</a></li>

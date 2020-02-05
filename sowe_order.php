@@ -53,10 +53,10 @@
       </div>
 
       <?php
-        $Or_id = $_GET['Or_id'];
-        $strSQL = "SELECT * FROM `order` WHERE Or_id = '".$_GET["Or_id"]."' ";
-        $objQuery = mysqli_query($conn,$strSQL);
-        $objResult = mysqli_fetch_array($objQuery);
+      $Or_id = $_GET['Or_id'];
+      $strSQL = "SELECT * FROM `order` WHERE Or_id = '".$_GET["Or_id"]."' ";
+      $objQuery = mysqli_query($conn,$strSQL);
+      $objResult = mysqli_fetch_array($objQuery);
       ?>
 
       <div class="site-section">
@@ -100,30 +100,35 @@
                       <td >
                        <?php echo $objResult2["Pro_name"];?>
                      </td>
-                     <td> <?php echo $objResult2["Pro_price"];?></td>
-                     <td><?php echo  $objResult1["Qty"];?></td>
-                     <td><?php echo number_format($Total,2);?></td>
+                     <td><?php
+                     echo $objResult2["Pro_price"];
+                     if($objResult2["Pro_type"]==0){
+                      echo "บาท/กรัม";
+                    }else{ echo "บาท/ชุด";}
+                    ?></td>
+                    <td><?php echo  $objResult1["Qty"];?></td>
+                    <td><?php echo number_format($Total,2);?></td>
 
-                   </tr>
-                 </tbody>
+                  </tr>
+                </tbody>
 
-                 <?php
+                <?php
 
-               }
-               ?>
-             </table>
-           </div>
-         </form>
-       </div>
+              }
+              ?>
+            </table>
+          </div>
+        </form>
+      </div>
 
 
 
-       <?php  
-       $ses_userid = $_SESSION["ses_userid"];
+      <?php  
+      $ses_userid = $_SESSION["ses_userid"];
 
-       $strSQL = "SELECT * FROM user WHERE UserID= $ses_userid";
-       $objQuery = mysqli_query($conn, $strSQL);
-       while ($objResult = mysqli_fetch_array($objQuery)){
+      $strSQL = "SELECT * FROM user WHERE UserID= $ses_userid";
+      $objQuery = mysqli_query($conn, $strSQL);
+      while ($objResult = mysqli_fetch_array($objQuery)){
 
         $f_name = $objResult["f_name"];
         $l_name = $objResult["l_name"];
@@ -133,7 +138,7 @@
 
       ?>
 
-    <div class="row">
+      <div class="row">
         <div class="col-md-6">
           <div class="row mb-0">
             <div class="col-md-6 ">
@@ -159,6 +164,11 @@
               <div class="alert alert-danger text-center" style="padding: 50px; font-size: 20px;">
                 หมายเลขชำระเงิน : <b><?php echo $Or_id; ?></b>
               </div>
+              <div  class="text-center" style="font-size: 20px"><b>ช่องทางการชำระเงิน</b></div><br>
+              <div  style="width: 10px">
+                <img src="images/payment2.jpg">
+              </div> 
+
               <label class="text-black h4" for="coupon"></label>
               <p></p>
             </div>
@@ -198,7 +208,8 @@
               <div class="row">
                 <div class="col-md-12" style="padding-left: 70px">
                   <input type=button class="btn btn-primary" name=print value="พิมพ์" onClick="window.print()">
-                  <input type=button  class="btn btn-primary" name=payment value="เเจ้งการชำระเงิน"  onclick="window.location='payment.php'" >
+                  <input type=button  class="btn btn-primary" name=payment value="เเจ้งการชำระเงิน"  onclick="window.location='payment2.php?Or_id=<?php echo $Or_id;?>'" >
+                </div>
               </div>
             </div>
           </div>
@@ -208,72 +219,71 @@
   </div>
 </div>
 </div>
-</div>
 
-  <footer class="site-footer custom-border-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-          <h3 class="footer-heading mb-4">OUR SHOP</h3>
-          <a href="#" class="block-6">
-            <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-            <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-            <p>Open now  &mdash;  April 20, 2019</p>
-          </a>
-        </div>
-        <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="footer-heading mb-4">Quick Links</h3>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Sell online</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Shopping cart</a></li>
-                <li><a href="#">Store builder</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Mobile commerce</a></li>
-                <li><a href="#">Dropshipping</a></li>
-                <li><a href="#">Website development</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Point of sale</a></li>
-                <li><a href="#">Hardware</a></li>
-                <li><a href="#">Software</a></li>
-              </ul>
-            </div>
+<footer class="site-footer custom-border-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+        <h3 class="footer-heading mb-4">OUR SHOP</h3>
+        <a href="#" class="block-6">
+          <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
+          <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
+          <p>Open now  &mdash;  April 20, 2019</p>
+        </a>
+      </div>
+      <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="footer-heading mb-4">Quick Links</h3>
           </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="block-5 mb-5">
-            <h3 class="footer-heading mb-4">Contact Info</h3>
+          <div class="col-md-6 col-lg-4">
             <ul class="list-unstyled">
-              <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-              <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-              <li class="email">n.kanrutai@kkumail.com</li>
+              <li><a href="#">Sell online</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Shopping cart</a></li>
+              <li><a href="#">Store builder</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <ul class="list-unstyled">
+              <li><a href="#">Mobile commerce</a></li>
+              <li><a href="#">Dropshipping</a></li>
+              <li><a href="#">Website development</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <ul class="list-unstyled">
+              <li><a href="#">Point of sale</a></li>
+              <li><a href="#">Hardware</a></li>
+              <li><a href="#">Software</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="row pt-5 mt-5 text-center">
-        <div class="col-md-12">
-          <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </p>
-        </div>
 
+      <div class="col-md-6 col-lg-3">
+        <div class="block-5 mb-5">
+          <h3 class="footer-heading mb-4">Contact Info</h3>
+          <ul class="list-unstyled">
+            <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
+            <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
+            <li class="email">n.kanrutai@kkumail.com</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="row pt-5 mt-5 text-center">
+      <div class="col-md-12">
+        <p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+      </div>
+
+    </div>
+  </div>
+</footer>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

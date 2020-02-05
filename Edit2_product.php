@@ -13,6 +13,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
   $Pro_detail = $objResult["Pro_detail"];
   $Pro_property = $objResult["Pro_property"];
   $Pro_img = $objResult["Pro_img"];
+  $Pro_weight = $objResult["Pro_weight"];
 }
 ?>
 <!DOCTYPE html>
@@ -98,6 +99,12 @@ while ($objResult = mysqli_fetch_array($objQuery)){
                     <div class="col-md-6">
                       <label for="Pro_amount" class="text-black">จำนวน <span class="text-danger">*</span></label>
                       <input type="text" class="form-control" id="Pro_amount" name="Pro_amount" value=<?php echo $Pro_amount ?>>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-6">
+                      <label for="Pro_weight" class="text-black">น้ำหนัก <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="Pro_weight" name="Pro_weight" value=<?php echo $Pro_weight ?>>
                     </div>
                   </div>
                   <div class="form-group row">

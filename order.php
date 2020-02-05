@@ -29,7 +29,7 @@ else
 		 $_SESSION["strQty"][$intNewLine] = 1;
 	}
 	
-	 header("location:cart.php");
+	 header("location:shop.php");
 
 }
 ?>

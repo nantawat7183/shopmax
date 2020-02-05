@@ -70,20 +70,26 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="Pro_name" class="text-black">ชื้อสินค้า <span class="text-danger">*</span></label>
+                    <label for="Pro_name" class="text-black">ชื้อสินค้า <span class="text-danger"></span></label>
                     <input type="text" class="form-control" id="Pro_name" name="Pro_name" required >
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="Pro_price" class="text-black">ราคา <span class="text-danger">*</span></label>
+                    <label for="Pro_price" class="text-black">ราคา <span class="text-danger"></span></label>
                     <input type="number" step="0.5" class="form-control" id="Pro_price" name="Pro_price" required >
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="Pro_amount" class="text-black">จำนวน <span class="text-danger">*</span></label>
+                    <label for="Pro_amount" class="text-black">จำนวน <span class="text-danger"></span></label>
                     <input type="text" class="form-control" id="Pro_amount" name="Pro_amount" required >
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="Pro_weight" class="text-black">น้ำหนัก <span class="text-danger"></span></label>
+                    <input type="text" class="form-control" id="Pro_weight" name="Pro_weight" required >
                   </div>
                 </div>
                 <div class="form-group row">
