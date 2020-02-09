@@ -120,215 +120,217 @@
                             echo "บาท/กรัม";
                           }else{ echo "บาท/ชุด";}
                           ?>
-                          </td>
-                          <td><?php echo $_SESSION["strQty"][$i];?></td>
-                          <td><?php echo number_format($Total,2);?></td>
-                          <td><a href="delete.php?Line=<?php echo $i;?>" class="btn btn-primary height-auto btn-sm">X</a></td>
-                        </tr>
-                      </tbody>
+                        </td>
+                        <td><?php echo $_SESSION["strQty"][$i];?></td>
+                        <td><?php echo number_format($Total,2);?></td>
+                        <td><a href="delete.php?Line=<?php echo $i;?>" class="btn btn-primary height-auto btn-sm">X</a></td>
+                      </tr>
+                    </tbody>
 
-                      <?php
-                    }
+                    <?php
                   }
-                  ?>
-                </table>
+                }
+                ?>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        <?php  
+        $ses_userid = $_SESSION["ses_userid"];
+
+        $strSQL = "SELECT * FROM user WHERE UserID= $ses_userid";
+        $objQuery = mysqli_query($conn, $strSQL);
+        while ($objResult = mysqli_fetch_array($objQuery)){
+
+          $f_name = $objResult["f_name"];
+          $l_name = $objResult["l_name"];
+          $addess = $objResult["addess"];
+          $email = $objResult["email"];
+          $U_tel = $objResult["U_tel"];
+        }
+
+        ?>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row mb-0">
+              <div class="col-md-6 ">
+                <div class="  btn-sm "></div>
+                <div class="row">
+                  <div class="col-md-12 text-left pl-5 mb-2">
+                    <h3 class="text-black h4 text-uppercase">ที่อยู่ในการจัดส่ง</h3>
+                  </div>
+                </div>
               </div>
-            </form>
-          </div>
+              <div class="col-md-6">
 
-          <?php  
-          $ses_userid = $_SESSION["ses_userid"];
+              </div>
+            </div>
 
-          $strSQL = "SELECT * FROM user WHERE UserID= $ses_userid";
-          $objQuery = mysqli_query($conn, $strSQL);
-          while ($objResult = mysqli_fetch_array($objQuery)){
-
-            $f_name = $objResult["f_name"];
-            $l_name = $objResult["l_name"];
-            $addess = $objResult["addess"];
-            $email = $objResult["email"];
-            $U_tel = $objResult["U_tel"];
-          }
-
-          ?>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="row mb-0">
-                <div class="col-md-6 ">
-                  <div class="  btn-sm "></div>
+            <div class="row">
+              <form style="width: 100%" action="save_order.php" method="post" name="updateuser" id="updateuser">
+                <div class="col-md-12">
+                  <div class="p-3 p-lg-5 border">
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_fname" class="text-black">ชื่อ-นาามสกุล <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="textName" name="textName" value=<?php echo  $f_name."".$l_name ?> >
+                      </div>                
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_message" class="text-black">ที่อยู่ </label>
+                        <textarea name="textAddress" id="textAddress"  cols="10" rows="2" class="form-control"><?php echo $addess ?></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_email" class="text-black">อีเมล์ <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="textEmail" name="textEmail" value=<?php echo $email ?> >
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="c_email" class="text-black">หมายเลขโทรศัพท์ <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="textU_tel" name="textU_tel" value=<?php echo $U_tel ?> >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="col-md-6 pl-3">
+              <div class="row justify-content-end">
+                <div class="col-md-7">
                   <div class="row">
-                    <div class="col-md-12 text-left pl-5 mb-2">
-                      <h3 class="text-black h4 text-uppercase">ที่อยู่ในการจัดส่ง</h3>
+                    <div class="col-md-12 text-left border-bottom mb-5">
+                      <h3 class="text-black h4 text-uppercase">ยอดรวม</h3>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-6">
-
-                </div>
-              </div>
-
-              <div class="row">
-                <form style="width: 100%" action="save_order.php" method="post" name="updateuser" id="updateuser">
-                  <div class="col-md-12">
-                    <div class="p-3 p-lg-5 border">
-                      <div class="form-group row">
-                        <div class="col-md-12">
-                          <label for="c_fname" class="text-black">ชื่อ-นาามสกุล <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" id="textName" name="textName" value=<?php echo  $f_name."".$l_name ?> >
-                        </div>                
-                      </div>
-                      <div class="form-group row">
-                        <div class="col-md-12">
-                          <label for="c_message" class="text-black">ที่อยู่ </label>
-                          <textarea name="textAddress" id="textAddress"  cols="10" rows="2" class="form-control"><?php echo $addess ?></textarea>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="col-md-12">
-                          <label for="c_email" class="text-black">อีเมล์ <span class="text-danger">*</span></label>
-                          <input type="email" class="form-control" id="textEmail" name="textEmail" value=<?php echo $email ?> >
-                        </div>
-                      </div>
-
-
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <span class="text-black">จำนวนสินค้า</span>
                     </div>
-
+                    <div class="col-md-6 text-right">
+                      <strong class="text-black"><?php echo number_format($SubTotle);?>.รายการ</strong>
+                    </div>
+                  </div>
+                  <div class="row mb-5">
+                    <div class="col-md-6">
+                      <span class="text-black">ยอดรวมทั้งหมด</span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                      <strong class="text-black"><?php echo number_format($SumTotal,2);?> บาท</strong>
+                    </div>
                   </div>
 
-                </div>
-              </div>
-              <hr>
-              <div class="col-md-6 pl-3">
-                <div class="row justify-content-end">
-                  <div class="col-md-7">
-                    <div class="row">
-                      <div class="col-md-12 text-left border-bottom mb-5">
-                        <h3 class="text-black h4 text-uppercase">ยอดรวม</h3>
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-md-6">
-                        <span class="text-black">จำนวนสินค้า</span>
-                      </div>
-                      <div class="col-md-6 text-right">
-                        <strong class="text-black"><?php echo number_format($SubTotle,2);?>กิโลกรัม</strong>
-                      </div>
-                    </div>
-                    <div class="row mb-5">
-                      <div class="col-md-6">
-                        <span class="text-black">ยอดรวมทั้งหมด</span>
-                      </div>
-                      <div class="col-md-6 text-right">
-                        <strong class="text-black"><?php echo number_format($SumTotal,2);?> บาท</strong>
-                      </div>
-                    </div>
 
+                  <div class="row">
 
-                    <div class="row">
-
-                      <div class="col-md-6">
-                        <select id="Deliver_method" name="Deliver_method" class="form-control">
-                          <option value="ส่งครั้งเดียว" >ส่งครั้งเดียว</option>
-                          <option value="ส่งทุกสัปดาห์">ส่งทุกสัปดาห์</option>
-                          <option value="ส่งทุกเดือน">ส่งทุกเดือน</option>
-                          <option value="ส่งทุกเดือน">ส่งทุก3เดือน</option>
-                        </select>
-                      </div>
-                      <div class="col-md-6">
-                        <?php if(isset($_SESSION["intLine"]) && $_SESSION["intLine"]!=0){?>
-                          <input type="submit" name="updateuser" id="updateuser" class="btn btn-primary btn-lg " value="ยืนยันสินค้า">
-                        <?php }else{?>
-                          <span class="btn btn-danger btn-lg">ไม่มีสินค้าในตะกร้า</span>
-                        <?php }?>
-                      </div>
+                    <div class="col-md-6">
+                      <select id="Deliver_method" name="Deliver_method" class="form-control">
+                        <option value="ส่งครั้งเดียว" >ส่งครั้งเดียว</option>
+                        <option value="ส่งทุกสัปดาห์">ส่งทุกสัปดาห์</option>
+                        <option value="ส่งทุกเดือน">ส่งทุกเดือน</option>
+                        <option value="ส่งทุกเดือน">ส่งทุก3เดือน</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <?php if(isset($_SESSION["intLine"]) && $_SESSION["intLine"]!=0){?>
+                        <input type="submit" name="updateuser" id="updateuser" class="btn btn-primary btn-lg " value="ยืนยันสินค้า">
+                      <?php }else{?>
+                        <span class="btn btn-danger btn-lg">ไม่มีสินค้าในตะกร้า</span>
+                      <?php }?>
                     </div>
                   </div>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
-    <hr>
 
-    <footer class="site-footer custom-border-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">OUR SHOP</h3>
-            <a href="#" class="block-6">
-              <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-              <p>Open now  &mdash;  April 20, 2019</p>
-            </a>
-          </div>
-          <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-            <div class="row">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Quick Links</h3>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Sell online</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Shopping cart</a></li>
-                  <li><a href="#">Store builder</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Mobile commerce</a></li>
-                  <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">Website development</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Point of sale</a></li>
-                  <li><a href="#">Hardware</a></li>
-                  <li><a href="#">Software</a></li>
-                </ul>
-              </div>
+
+  <footer class="site-footer custom-border-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <h3 class="footer-heading mb-4">OUR SHOP</h3>
+          <a href="#" class="block-6">
+            <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
+            <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
+            <p>Open now  &mdash;  April 20, 2019</p>
+          </a>
+        </div>
+        <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="footer-heading mb-4">Quick Links</h3>
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
+            <div class="col-md-6 col-lg-4">
               <ul class="list-unstyled">
-                <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">n.kanrutai@kkumail.com</li>
+                <li><a href="#">Sell online</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Shopping cart</a></li>
+                <li><a href="#">Store builder</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><a href="#">Mobile commerce</a></li>
+                <li><a href="#">Dropshipping</a></li>
+                <li><a href="#">Website development</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><a href="#">Point of sale</a></li>
+                <li><a href="#">Hardware</a></li>
+                <li><a href="#">Software</a></li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
 
+        <div class="col-md-6 col-lg-3">
+          <div class="block-5 mb-5">
+            <h3 class="footer-heading mb-4">Contact Info</h3>
+            <ul class="list-unstyled">
+              <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
+              <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
+              <li class="email">n.kanrutai@kkumail.com</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </footer>
-  </div>
+      <div class="row pt-5 mt-5 text-center">
+        <div class="col-md-12">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
+      </div>
+    </div>
+  </footer>
+</div>
 
-  <script src="js/main.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>

@@ -191,17 +191,25 @@
                          </form><br>
                          <h6>ที่อยู่ : <?php echo $objResult['Or_address']; ?></h6>
 
-                          <h6>สถานะ : <?php echo $status ?></h6>
+                         <?php 
+                         if($objResult['status']==4){ 
+                           echo "<h6>หมายเลขติดตามพัสดุ:<a href='https://www.parcelmonitor.com/th-track-thailand-post/'>ไปยังหน้าของThai Post</a></h6>";
+
+                         ?>
+
+                        <?php  }?>
+                       
+                        
 
 
-                       </div>
-                       <div class="col-md-2"></div>
-                       <div class="col-md-8">
+                      </div>
+                      <div class="col-md-2"></div>
+                      <div class="col-md-8">
                         <div class="order-status" style="margin-top:50px;margin-bottom: 70px">
                           <div class="order-status-timeline">
                             <div class="order-status-timeline-completion <?php echo $status_flag;?>"></div>
                           </div>
-                           <div class="image-order-status image-order-status-new active img-circle">
+                          <div class="image-order-status image-order-status-new active img-circle">
                             <span class="status" style="font-size: 10px">ยังไม่ชำระเงิน</span>
                             <div class="icon"></div>
                           </div> 

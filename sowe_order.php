@@ -134,6 +134,7 @@
         $l_name = $objResult["l_name"];
         $addess = $objResult["addess"];
         $email = $objResult["email"];
+         $U_tel = $objResult["U_tel"];
       }
 
       ?>
@@ -160,6 +161,7 @@
               <p type="text" id="textName" name="textName"><?php echo "ชื่อ: " . $f_name . " " .  $l_name ?></p>
               <p name="textAddress" id="textAddress"><?php echo "ที่อยู่: " . $addess ?></p>
               <p type="email"  id="textEmail" name="textEmail"><?php echo "อีเมลล์: " . $email ?></p>
+               <p type="text"  id="textU_tel" name="textU_tel"><?php echo "หมายเลขโทรศัพท์: " . $U_tel ?></p>
               <!--  <a href='edit.php?UserId=$row[0]'>แก้ไข</a> <br><br><br> -->
               <div class="alert alert-danger text-center" style="padding: 50px; font-size: 20px;">
                 หมายเลขชำระเงิน : <b><?php echo $Or_id; ?></b>
@@ -193,7 +195,7 @@
                   <span class="text-black">จำนวนรวม</span>
                 </div>
                 <div class="col-md-6 text-right">
-                  <strong class="text-black"><?php echo number_format($SubTotle,2);?>กิโลกรัม</strong>
+                  <strong class="text-black"><?php echo number_format($SubTotle);?>.รายการ</strong>
                 </div>
               </div>
               <div class="row mb-5">

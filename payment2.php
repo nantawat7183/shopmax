@@ -132,12 +132,6 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
 ?>
 
-<?php
-$Or_id = $_GET['Or_id'];
-$strSQL = "SELECT * FROM `order` WHERE Or_id = '".$_GET["Or_id"]."' ";
-$objQuery = mysqli_query($conn,$strSQL);
-$objResult = mysqli_fetch_array($objQuery);
-?>
 
 
 
@@ -168,9 +162,14 @@ $objResult = mysqli_fetch_array($objQuery);
     <legend></legend>
   </div>
   <!-- panel preview -->
-  <div class="col-lg-6">
+  <div class="col-lg-5">
 
     <?php
+    $Or_id = $_GET['Or_id'];
+    $strSQL = "SELECT * FROM `order` WHERE Or_id = '".$Or_id."' ";
+    $objQuery = mysqli_query($conn,$strSQL);
+    $objResult = mysqli_fetch_array($objQuery);
+
     $Total = 0;
     $SumTotal = 0;
     $SubTotle = 0; 
@@ -187,14 +186,13 @@ $objResult = mysqli_fetch_array($objQuery);
 
     ?>
     <h6>ช่องทางการชำระเงิน</h6><br>
-    <div  style="width: 10px">
+    <div  style="display: flex; align-items: center; justify-content: center;">
       <img src="images/payment2.jpg">
     </div> <br>
 
     <h6>รายการสินค้า</h6>
-    <div class="col-md-2"></div>
-    <div class="col-md-12">
-     <div class="site-blocks-table">
+    
+    <div class="site-blocks-table">
       <table class="table table-bordered table-hover">
         <thead>
           <tr style="padding: 2px">
@@ -271,7 +269,7 @@ $objResult = mysqli_fetch_array($objQuery);
       <div class="form-group">
         <label for="date" class="col-sm-3 control-label">วันที่/เวลาที่โอน</label>
         <div class="col-sm-9">
-          <input type="datetime-local" class="form-control" id="Pay_date" name="Pay_date" value="<?=date('Y-m-d H:i:s')?>" required>
+          <input type="datetime-local" class="form-control" id="Pay_date" name="Pay_date" value="<?=date('Y-m-d')."T".date('H:i:s')?>" required>
         </div>
       </div>   
       <div class="form-group">
@@ -350,7 +348,7 @@ $objResult = mysqli_fetch_array($objQuery);
                 </div> -->
                 
 
-                <hr>
+                <br><br>
 
 
 

@@ -103,7 +103,7 @@
           
           <?php
           
-          $strSQL =  "SELECT * FROM menu INNER JOIN product ON menu.Pro_id = product.Pro_id ";
+          $strSQL =  "SELECT * FROM menu INNER JOIN product ON menu.Pro_id = product.Pro_id order by Pro_name";
           $objQuery = mysqli_query($conn, $strSQL);
           while ($objResult = mysqli_fetch_array($objQuery)){
             $Pro_id = $objResult["Pro_id"];

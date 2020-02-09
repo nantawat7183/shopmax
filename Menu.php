@@ -93,12 +93,10 @@ if (!isset($_SESSION)) {
             </a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
           </div>
-          <a  style="margin-left:1%";>
-            <a style="color: #DCDCDC" >
 
              <?php 
              if (isset($_SESSION["ses_userid"])) {?>
-               <a  style="margin-left:1%;";>
+               <a href="#" style="margin-left:1%;";>
                 <span class="icon-person"></span>
                 <span style="color: #555" >
                 <?php } else{ ?>
@@ -121,9 +119,8 @@ if (!isset($_SESSION)) {
                 echo $full;
               }
               ?>
-            </a>
+            </span>
           </a>
-
 
         </div>
 

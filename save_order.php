@@ -9,9 +9,9 @@ $Total = 0;
 $SumTotal = 0;
 $id=rand(00000000001,999999999);
 
-$strSQL = "INSERT INTO `order` (Or_id, `Or_date`, `Or_name`, `Or_address`, `Or_email`, `UserID`,`Deliver_method`)
+$strSQL = "INSERT INTO `order` (Or_id, `Or_date`, `Or_name`, `Or_address`, `Or_email`, `UserID`,`Deliver_method`,`U_tel`)
 VALUES
-(".$id.",'".date("Y-m-d H:i:s")."','".$_POST["textName"]."','".$_POST["textAddress"]."','".$_POST["textEmail"]."',".$ses_userid.",'".$_POST["Deliver_method"]."') ";
+(".$id.",'".date("Y-m-d H:i:s")."','".$_POST["textName"]."','".$_POST["textAddress"]."','".$_POST["textEmail"]."',".$ses_userid.",'".$_POST["Deliver_method"]."','".$_POST["textU_tel"]."') ";
 mysqli_query($conn,$strSQL);
 
 

@@ -1,20 +1,6 @@
 <?php include "connectdb.php";?>
 <?php include "check_session.php"; ?>
-<?php
-  $Pro_name = $_GET['seach'];
-  $strSQL = "SELECT * FROM product WHERE(Pro_name LIKE '%".$Pro_name."%' )";
-            $objQuery = mysqli_query($conn, $strSQL);
-              while ($objResult = mysqli_fetch_array($objQuery)){
-              $Pro_id = $objResult["Pro_id"];
-              $Pro_name = $objResult["Pro_name"];
-              $Pro_price = $objResult["Pro_price"];
-              $Pro_amount = $objResult["Pro_amount"];
-              $Pro_detail = $objResult["Pro_detail"];
-              $Pro_property = $objResult["Pro_property"];
-              $Pro_img = $objResult["Pro_img"];
-            }
-           
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +69,21 @@
     </div>
 
 
-
+<?php
+  $Pro_name = $_GET['seach'];
+  $strSQL = "SELECT * FROM product WHERE(Pro_name LIKE '%".$Pro_name."%' )";
+            $objQuery = mysqli_query($conn, $strSQL);
+              while ($objResult = mysqli_fetch_array($objQuery)){
+              $Pro_id = $objResult["Pro_id"];
+              $Pro_name = $objResult["Pro_name"];
+              $Pro_price = $objResult["Pro_price"];
+              $Pro_amount = $objResult["Pro_amount"];
+              $Pro_detail = $objResult["Pro_detail"];
+              $Pro_property = $objResult["Pro_property"];
+              $Pro_img = $objResult["Pro_img"];
+           
+           
+?>
 
     <div class="site-section">
       <div class="container">
@@ -140,6 +140,8 @@
         </div>
       </div>
     </div>
+
+  <?php } ?>
 
 
            <!--  </a>

@@ -9,6 +9,7 @@
 if(isset($_POST)){
   $Or_id = $_POST['Or_id'];
   $status  =  $_POST['status'];
+  $status_ems  =  $_POST['Status_ems'];
   
 
 
@@ -16,7 +17,8 @@ if(isset($_POST)){
 
 
   $sql = "UPDATE `order` SET
-  status  = '$status'
+  status  = '$status',
+  status_ems  = '$status_ems'
 
   WHERE Or_id = $Or_id";
   
