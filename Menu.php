@@ -16,8 +16,8 @@ if (!isset($_SESSION)) {
 <body>
   <nav class="navbar navbar-light bg-warning">
     <a class="navbar-brand"></a>
-    <form class="form-inline" action="seach_pro.php?Pro_id=<?php echo $Pro_name ?>" method="get">
-      <input class="form-control mr-sm-2" type="search" name="seach" placeholder="Search" aria-label="Search">
+    <form class="form-inline" action="index.php" method="get">
+      <input class="form-control mr-sm-2" type="search" name="key" id="key" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </nav>
@@ -36,7 +36,7 @@ if (!isset($_SESSION)) {
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                
+
                 <li ><!-- class="has-children "> -->
                   <a href="index.php">หน้าหลัก</a>
                  <!--  <ul class="dropdown">
@@ -55,12 +55,29 @@ if (!isset($_SESSION)) {
                 
                <!--  <li><a href="menu_pro.php">วิธีทำอาหาร</a></li>
                 <li><a href="Property.php">สรรพคุณ</a></li> -->
-               <!--  <li><a href="#">โปรโมชั่น</a></li> -->
+                <!--  <li><a href="#">โปรโมชั่น</a></li> -->
                 <?php 
                 if (isset($_SESSION["ses_userid"])) {?>
-                <li><a href="status.php">ติดตามสินค้า</a></li>
-                 <?php } else{ }?>
-                  <?php ?>
+                  <li>
+                    <a href="status.php" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ติดตามสินค้า</a>
+                      <div class="dropdown-menu pb-0">
+                        <form class="dropdown-item pb-0" action="status.php" method="get">
+                          <h5>ติดตาม</h5>
+                          <div class="form-group">
+                            <span style="color:#9E9C97">กรุณากรอกรหัสการสั่งซื้อของคุณ</span><br><br>
+                            <input type="text" name="order_id" class="form-control form-control-sm" required><br>
+                            <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;" >GO</button>
+                          </div>
+                        <form>
+                      </div>
+                  </li>                  
+                <?php } else{ }?>
+                <?php ?>
+                <?php 
+                if (isset($_SESSION["ses_userid"])) {?>
+                  <li><a href="status_history.php">ประวัติการสั่งซื้อ</a></li>
+                <?php } else{ }?>
+                <?php ?>
                 <li><a href="payment.php">ชำระเงิน</a></li>
                 <?php 
                 if (isset($_SESSION["ses_userid"])) {?>
@@ -94,39 +111,44 @@ if (!isset($_SESSION)) {
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
           </div>
 
-             <?php 
-             if (isset($_SESSION["ses_userid"])) {?>
-               <a href="#" style="margin-left:1%;";>
-                <span class="icon-person"></span>
-                <span style="color: #555" >
-                <?php } else{ ?>
-                <?php }?>
+          <?php 
+          if (isset($_SESSION["ses_userid"])) {?>
+           <a href="#" style="margin-left:1%;">
+            <span class="icon-person"></span>
+            <span style="color: #555" >
+            <?php } else{ ?>
+            <?php }?>
 
 
 
-                <?php 
-                if (isset($_SESSION["ses_userid"])) {
-                 $strSQL = "SELECT * FROM user WHERE UserID = ".$_SESSION["ses_userid"]."";
-                 $objQuery = mysqli_query($conn, $strSQL);
-                 while ($objResult = mysqli_fetch_array($objQuery)){
-
-                  $fname = $objResult["f_name"];
-
-                  $lname = $objResult["l_name"];
-                  $status = $objResult["status"];
-                  $full =  $fname." ".$lname." ".$status;
-                }
-                echo $full;
-              }
-              ?>
-            </span>
-          </a>
-
-        </div>
 
 
 
-      </div>
+
+
+            <?php 
+            if (isset($_SESSION["ses_userid"])) {
+             $strSQL = "SELECT * FROM user WHERE UserID = ".$_SESSION["ses_userid"]."";
+             $objQuery = mysqli_query($conn, $strSQL);
+             while ($objResult = mysqli_fetch_array($objQuery)){
+
+              $fname = $objResult["f_name"];
+
+              $lname = $objResult["l_name"];
+              $status = $objResult["status"];
+              $full =  $fname." ".$lname." ".$status;
+            }
+            echo $full;
+          }
+          ?>
+        </span>
+      </a>
+
     </div>
-  </body>
-  </html>
+
+
+
+  </div>
+</div>
+</body>
+</html>

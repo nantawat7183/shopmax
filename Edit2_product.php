@@ -78,9 +78,9 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
                 <div class="p-3 p-lg-5 border">
                   <div class="form-group row">
-                    <div class="col-md-2">
-                      <label for="Pro_id" class="text-black">รหัสสินค้า <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" id="Pro_id" name="Pro_id" value=<?php echo $Pro_id ?>>
+                    <div class="col-md-6">
+                      <label for="Pro_id" class="text-black"> รหัสสินค้า:<?php echo $Pro_id ?></label>
+                      <input  type="hidden" class="form-control" id="Pro_id" name="Pro_id" value=<?php echo $Pro_id ?>>
                     </div>
                   </div>
                   <div class="form-group row">

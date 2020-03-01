@@ -129,7 +129,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="title-section mb-5">
-                <h2 class="h3 mb-3 text-black">ติดตามสถานะสินค้า</h2>
+                <h2 class="h3 mb-3 text-black">สถานะสินค้า</h2>
               </div>
             </div>
             <div class="col-md-12">
@@ -140,17 +140,7 @@
 
                     <?php 
                     $uid = $_SESSION["ses_userid"];
-                    $order_id="";
-                    if(isset($_GET['order_id'])){
-                      $order_id=$_GET['order_id'];
-                    }
-                    
-                    if($order_id != ""){
-                      $strSQL = "SELECT * FROM `order` WHERE UserID = '".$uid."' and Or_id = ".$order_id." order by Or_id desc";
-                    }else{
-                      exit();
-                    }
-
+                    $strSQL = "SELECT * FROM `order` WHERE UserID = '".$uid."' order by Or_date desc";
                     $objQuery = mysqli_query($conn,$strSQL);
                     $status_flag='c0';
                     $status="0";

@@ -146,7 +146,11 @@
     <legend></legend>
   </div>
   <!-- panel preview -->
-  <div class="col-lg-6">
+  <div class="col-lg-5">
+     <h6>ช่องทางการชำระเงิน</h6><br>
+    <div  style="display: flex; align-items: center; justify-content: center;">
+      <img src="images/payment2.jpg">
+    </div> <br>
 
    
 

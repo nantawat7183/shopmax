@@ -93,35 +93,41 @@
       
 
 
-      <div class="site-section">
-        <div class="container">
+      <div class="site-section" >
+        <div class="container" style="margin-left: 20px;">
           <div class="row">
             <div class="title-section mb-5 col-12">
-              <h2 class="text-uppercase">เเก้ไขเมนูอาหาร</h2>
+              <h2 class="text-uppercase">เเก้ไข้สถานะการจัดส่ง</h2>
             </div>
           </div>
-          
-          <?php
-          
-          $strSQL =  "SELECT * FROM menu INNER JOIN product ON menu.Pro_id = product.Pro_id order by Pro_name";
-          $objQuery = mysqli_query($conn, $strSQL);
-          while ($objResult = mysqli_fetch_array($objQuery)){
-            $Pro_id = $objResult["Pro_id"];
-            $Pro_name = $objResult["Pro_name"];
-            $Pro_price = $objResult["Pro_price"];
-            $Pro_amount = $objResult["Pro_amount"];
-            $Pro_detail = $objResult["Pro_detail"];
-            $Pro_property = $objResult["Pro_property"];
-            $Pro_img = $objResult["Pro_img"];
-            $Menu_id = $objResult["Menu_id"];
-            $Menu_name = $objResult["Menu_name"];
-            $Menu_img = $objResult["Menu_img"];
-            
-            ?>
+        </div>
+        <div class="col-md-6">
+      <a href="add_menu.php" class="btn btn-primary btn-sm px-4 py-2" style="font-size: 18px;margin-left: 20px">เพิ่มสินค้า</a>
+    </div>
+    
+        <?php
 
-            <div class="site-section" style="padding-top:5px; padding-bottom:5px">
-              <div class="container">
-                <div class="row mb-5">
+        $strSQL =  "SELECT * FROM menu INNER JOIN product ON menu.Pro_id = product.Pro_id order by Pro_name";
+        $objQuery = mysqli_query($conn, $strSQL);
+        while ($objResult = mysqli_fetch_array($objQuery)){
+          $Pro_id = $objResult["Pro_id"];
+          $Pro_name = $objResult["Pro_name"];
+          $Pro_price = $objResult["Pro_price"];
+          $Pro_amount = $objResult["Pro_amount"];
+          $Pro_detail = $objResult["Pro_detail"];
+          $Pro_property = $objResult["Pro_property"];
+          $Pro_img = $objResult["Pro_img"];
+          $Menu_id = $objResult["Menu_id"];
+          $Menu_name = $objResult["Menu_name"];
+          $Menu_img = $objResult["Menu_img"];
+
+          ?>
+
+
+          <div class="row">
+            <div class="site-section pt-2" style="padding-top: 8px; padding-bottom: 8px">
+              <div class="px-5">
+                <div class="row mb-5" >
                   <form class="col-md-12" method="post">
                     <div class="site-blocks-table">
                       <table class="table table-bordered">
@@ -137,9 +143,9 @@
                           </tr>
                         </thead>
                         <tr>
-                          <td>
+                          <td  style="size: 100%">
                            <?php echo $Pro_id ?></td>
-                           <td> <img src="<?php echo $Pro_img ?>" alt="Image" class="img-fluid"></td>
+                           <td style="width: 5px;height: 10px"> <img src="<?php echo $Pro_img ?>"  alt="Image"  class="img-fluid"></td>
                            <td><?php echo $Pro_name ?></td>
                            <td><?php echo $Menu_name ?></td>
                            <td> <img src="<?php echo $Menu_img ?>" alt="Image" class="img-fluid"></td>
@@ -151,21 +157,17 @@
                    </div>
                  </form>
                </div>
-               <?php 
-             }
-             ?>    
-             <div class="col-md-6">
-              <a href="add_menu.php" class="btn btn-primary btn-sm px-4 py-2" style="font-size: 18px;">เพิ่มสินค้า</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <?php 
+     }
+     ?>    
 
 
-           
+
+
 
 
 

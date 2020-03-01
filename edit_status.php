@@ -85,7 +85,7 @@
       <?php include "Menu_addmin.php"; ?> 
 
 
-       <div class="custom-border-bottom py-3">
+      <div class="custom-border-bottom py-3">
         <div class="container">
           <div class="row">
             <div class="col-md-12 mb-0"><strong class="text-black">เเก้ไขติดตามสินค้า</strong> <span class="mx-2 mb-0">/</span> </div>
@@ -104,27 +104,27 @@
             </div>
           </div>
         </div>
-          
-          <?php
-          
-          $strSQL =  "SELECT * FROM payment ,`order` where `order`.Or_id = payment.Or_id order by Pay_id desc";
-          $objQuery = mysqli_query($conn, $strSQL);  
-          while ($objResult = mysqli_fetch_array($objQuery)){
-            $Or_id = $objResult["Or_id"];
-            $Or_date = $objResult["Or_date"];
-            $Or_name = $objResult["Or_name"];
-            $Or_address = $objResult["Or_address"];
-            $Or_email = $objResult["Or_email"];
-            $UserID = $objResult["UserID"];
-            $status = $objResult["status"];
-            $Pay_id = $objResult["Pay_id"];
-            $Pay_bank = $objResult["Pay_bank"];
-            $Pay_date = $objResult["Pay_date"];
-            $Pay_img = $objResult["Pay_img"];
-            
-            ?>
-            
-            <div class="row">
+
+        <?php
+
+        $strSQL =  "SELECT * FROM payment ,`order` where `order`.Or_id = payment.Or_id order by Pay_id desc";
+        $objQuery = mysqli_query($conn, $strSQL);  
+        while ($objResult = mysqli_fetch_array($objQuery)){
+          $Or_id = $objResult["Or_id"];
+          $Or_date = $objResult["Or_date"];
+          $Or_name = $objResult["Or_name"];
+          $Or_address = $objResult["Or_address"];
+          $Or_email = $objResult["Or_email"];
+          $UserID = $objResult["UserID"];
+          $status = $objResult["status"];
+          $Pay_id = $objResult["Pay_id"];
+          $Pay_bank = $objResult["Pay_bank"];
+          $Pay_date = $objResult["Pay_date"];
+          $Pay_img = $objResult["Pay_img"];
+
+          ?>
+
+          <div class="row">
             <div class="site-section pt-2" style="padding-top: 8px; padding-bottom: 8px">
               <div class="px-5">
                 <div class="row mb-5">
@@ -143,7 +143,7 @@
                             <th class="th-h">วันที่ชำระเงิน</th>
                             <th class="th-h">ใบเสร็จชำระเงิน</th>
                             <th class="th-h">สถานะจัดส่ง</th>
-                             <th class="th-h">เเก้ไขสถานะ</th>
+                            <th class="th-h">เเก้ไขสถานะ</th>
 
                           </tr>
                         </thead>
@@ -157,7 +157,18 @@
                           <td><?php echo $Pay_bank ?></td>
                           <td><?php echo $Pay_date ?></td>                       
                           <td> <img src="<?php echo $Pay_img ?>" alt="Image" class="img-fluid" width="150"></td>
-                          <td><?php echo $status ?></td>
+                          <td><?php   if($objResult['status']==0){
+                            echo "ยังไม่ชำระเงิน";
+                          }else if($objResult['status']==1){
+                            echo" กำลังตรวจสอบการชำระเงิน";
+                          }else if($objResult['status']==2){
+                            echo" ชำระเงินเเล้ว";
+                          }else if($objResult['status']==3){
+                            echo" กำลังรอการจัดส่ง";
+                          }
+                          else if($objResult['status']==4){
+                            echo" ดำเนินการจัดส่งเเล้ว";
+                          }?></td>
                           <td><button class=button1 ><a href="edit_to_status.php?Pay_id=<?php echo $Pay_id ?>&Or_id=<?php echo $Or_id ?>">เเก้ไข</a></button></a></td>
                         </tr>
                       </tbody>
@@ -169,11 +180,11 @@
           </div>
         </div>
       </div>
-              <?php 
-            }
-            ?>    
-            
-            <hr>
+      <?php 
+    }
+    ?>    
+
+    <hr>
 
 
 

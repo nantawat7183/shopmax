@@ -22,12 +22,13 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
   <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
   
   <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
   <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> -->
   <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  
   <style type="text/css">
     body{ 
       margin-top:40px; 
@@ -98,7 +99,7 @@
 </style>
 
 </head>
-<body>
+<body >
 
   <div class="site-wrap">
 
@@ -116,8 +117,6 @@
 
       <?php include "Menu_addmin.php"; ?> 
 
-   
-
       <div class="custom-border-bottom py-3">
         <div class="container">
           <div class="row">
@@ -129,9 +128,19 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <div class="title-section mb-5">
+              <div class="title-section mb-2">
                 <h2 class="h3 mb-3 text-black">รายการสั่งซื้อ</h2>
               </div>
+            </div>
+            <div class="col-md-5" style="margin:auto;">
+              <form action="" method="get">
+                <div class="input-group mb-3">
+                  <input type="date" class="form-control" name="order_date" id="order_date" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" value="<?=(!empty($_GET['order_date'])) ? $_GET['order_date'] : ''?>">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary btn-sm " type="submit" id="button-addon2">Button</button>
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="col-md-12">
               <?php include "css_status.php"; ?>
@@ -141,127 +150,150 @@
 
                     <?php 
                     $uid = $_SESSION["ses_userid"];
-                    $strSQL = "SELECT * FROM `order` WHERE 1 order by Or_date desc";
+                    $strSQL = "SELECT * FROM `order` ";
+                    if(!empty($_GET['order_date'])){
+                      $start_date=$_GET['order_date']." 00:00:00";
+                      $end_date=$_GET['order_date']." 23:59:59";
+                      // echo $_GET['order_date'];
+                      $strSQL=$strSQL."where Or_date >'".$start_date."' and Or_date < '".$end_date."'";
+                    }
+                    $strSQL=$strSQL."order by Or_date desc";
+                    // echo $strSQL;
+
                     $objQuery = mysqli_query($conn,$strSQL);
                     $status_flag='c0';
                     if(mysqli_num_rows($objQuery)== 0){
                       echo "ไม่พบรายการสินค้า"; exit();
                     }
-                    while($objResult = mysqli_fetch_array($objQuery)){
-                      if($objResult['status']==0){
-                        $status_flag="c0";
-                      }else if($objResult['status']==1){
-                        $status_flag=" c1";
-                      }else if($objResult['status']==2){
-                        $status_flag=" c2";
-                      }else if($objResult['status']==3){
-                        $status_flag=" c3";
-                      }
-                      else if($objResult['status']==4){
-                        $status_flag=" c4";
-                      }
-                      echo "<br>";
-                      ?>
+                    echo "<br>";
+                    ?>
 
-
-                      <div class="row col-md-12" >
-                        <div class="col-md-12">
-                          <h4>รหัสสั่งซื้อ : <?php echo $objResult['Or_id'];?></h4>
-
-
-                          <div class="row col-md-12" style="padding-left: 0px; padding-right: 15px" >
-                           <div class="col-md-12  "  >                               
-                            <h5>สถานะ:  <?php if($objResult['status']==0){
-                              echo"ยังไม่ชำระเงิน";
-                            }else if($objResult['status']==1){
-                              echo" กำลังตรวจสอบการชำระเงิน";
-                            }else if($objResult['status']==2){
-                              echo" ชำระเงินเเล้ว";
-                            }else if($objResult['status']==3){
-                              echo" กำลังรอการจัดส่ง";
-                            }
-                            else if($objResult['status']==4){
-                              echo" ดำเนินการจัดส่งเเล้ว";
-                            } ?></h5>                              
+                    <!-- //////////////////////////////////////////// -->
+                    <div class="accordion" id="accordionExample">
+                      <?php 
+                      $indexI=0;
+                      while($objResult = mysqli_fetch_array($objQuery)){
+                        $indexI++;
+                        if($objResult['status']==0){
+                          $status_flag="c0";
+                        }else if($objResult['status']==1){
+                          $status_flag=" c1";
+                        }else if($objResult['status']==2){
+                          $status_flag=" c2";
+                        }else if($objResult['status']==3){
+                          $status_flag=" c3";
+                        }
+                        else if($objResult['status']==4){
+                          $status_flag=" c4";
+                        }
+                        ?>
+                        <div class="card">
+                          <div class="card-header" id="headingOne">
+                            <div class="mb-0 row" style="">
+                              <div class="col-md-9">
+                                <a href="javascript:void(0)" class="" data-toggle="collapse" data-target="#collapseOne<?=$indexI?>" aria-expanded="false" aria-controls="collapseOne<?=$indexI?>">
+                                  <h6>รหัสสั่งซื้อ : <?php echo $objResult['Or_id'];?> </h6>
+                                </a>
+                              </div>
+                              <div class="col-md-3">
+                                <span>
+                                 สถานะ:  <?php if($objResult['status']==0){
+                                  echo"ยังไม่ชำระเงิน";
+                                }else if($objResult['status']==1){
+                                  echo" กำลังตรวจสอบการชำระเงิน";
+                                }else if($objResult['status']==2){
+                                  echo" ชำระเงินเเล้ว";
+                                }else if($objResult['status']==3){
+                                  echo" กำลังรอการจัดส่ง";
+                                }
+                                else if($objResult['status']==4){
+                                  echo" ดำเนินการจัดส่งเเล้ว";
+                                } ?>
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-md-12  "  >                               
-                          <h5>การจัดส่ง:  <?php echo $objResult['Deliver_method'];?></h5>                              
+                        <div id="collapseOne<?=$indexI?>" class="collapse" aria-labelledby="headingOne<?=$indexI?>" data-parent="#accordionExample">
+                          <!-- body -->
+                          <div class="card-body">
+                            <div class="row col-md-12">
+                              <div class="col-md-10  "  >                               
+                                <h6>การจัดส่ง:  <?php echo $objResult['Deliver_method'];?></h6>
+                                <h6>ชื่อ:  <?php echo $objResult['Or_name'];?></h6>
+                                <h6>ที่อยู่:  <?php echo $objResult['Or_address'];?></h6>
+                              </div>
+                              <div class="col-md-2 ">
+                                <?php
+                                $strSQL_payment =  "SELECT * FROM payment where Or_id = ".$objResult['Or_id'];
+                                $objQuery_payment = mysqli_query($conn, $strSQL_payment);
+                                $result_payment=mysqli_fetch_array($objQuery_payment);
+                                if($objResult['status']!= 0){
+                                  ?>
+                                  <a href="edit_to_status.php?Pay_id=<?=$result_payment['Pay_id']?>&Or_id=<?=$objResult['Or_id']?>" class="btn btn-sm btn-outline-primary">การชำระเงิน</a>
+                                <?php } ?>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="site-blocks-table">
+                                <table class="table table-bordered table-hover">
+                                  <thead>
+                                    <tr style="padding: 2px">
+                                      <th class="product-thumbnail">รูปภาพ</th>
+                                      <th class="product-name">ชื่อสินค้า</th> 
+                                      <th class="product-price">ราคา</th>
+                                      <th class="product-quantity">จำนวน</th>
+                                    </tr>
+                                  </thead>
+                                  <?php
+                                  $Total = 0;
+                                  $SumTotal = 0;
+                                  $SubTotle = 0; 
+                                  $strSQL_productlist = "SELECT * FROM `order_detail` WHERE Or_id=".$objResult['Or_id'];
+                                  $objQuery_productlist = mysqli_query($conn,$strSQL_productlist)  or die(mysql_error());
+                                  while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
+                                    $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
+                                    $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
+                                    $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
+                                    $Total =  $Total+($objResult_productlist["Qty"] * $objResult_getProduct["Pro_price"]);
+                                    $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
+                                    ?>
+                                    <tr>
+                                      <td >
+                                       <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
+                                     </td>
+                                     <td >
+                                       <?php echo $objResult_getProduct["Pro_name"];?>
+                                     </td>
+                                     <td> <?php echo $objResult_getProduct["Pro_price"];?></td>
+                                     <td><?php echo $objResult_productlist["Qty"];?></td>
+                                   </td>
+                                 </tr>
+                               </tbody>
+                             <?php }?>
+                           </table> 
+                           <div class="col-md-12text-right">
+                            <label for="Pro_id" class="text-black">จำนวนสินค้า <span class="text-danger"></span></label>
+                            <strong class="text-black"><?php echo $SubTotle ?>กิโลกรัม</strong>
+                          </div>
+                          <div class="col-md-12text-right">
+                            <label for="Pro_id" class="text-black">ราคารวม <span class="text-danger"></span></label>
+                            <strong class="text-black"><?php echo $Total ?>กิโลกรัม</strong>
+                          </div>
                         </div>
-                        <div class="col-md-12  "  >                               
-                          <h5>ชื่อ:  <?php echo $objResult['Or_name'];?></h5>                                
-                        </div>
-                        <div class="col-md-12  "  >                              
-                          <h5>ที่อยู่:  <?php echo $objResult['Or_address'];?></h5>                                
-                        </div>
-
-
                       </div>
-                    </div>
-
-                    <div class="col-md-2"></div>
-                    <div class="col-md-12">
-                     <div class="site-blocks-table">
-                      <table class="table table-bordered table-hover">
-                        <thead>
-                          <tr style="padding: 2px">
-                            <th class="product-thumbnail">รูปภาพ</th>
-                            <th class="product-name">ชื่อสินค้า</th> 
-                            <th class="product-price">ราคา</th>
-                            <th class="product-quantity">จำนวน</th>
-                          </tr>
-                        </thead>
-                        <?php
-                        $Total = 0;
-                        $SumTotal = 0;
-                        $SubTotle = 0; 
-
-
-                        $strSQL_productlist = "SELECT * FROM `order_detail` WHERE Or_id=".$objResult['Or_id'];
-                        $objQuery_productlist = mysqli_query($conn,$strSQL_productlist)  or die(mysql_error());
-                        while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
-                          $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
-                          $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
-                          $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
-                          $Total =  $Total+($objResult_productlist["Qty"] * $objResult_getProduct["Pro_price"]);
-                          $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
-                          ?>
-                          <tr>
-                            <td >
-                             <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
-                           </td>
-                           <td >
-                             <?php echo $objResult_getProduct["Pro_name"];?>
-                           </td>
-                           <td> <?php echo $objResult_getProduct["Pro_price"];?></td>
-                           <td><?php echo $objResult_productlist["Qty"];?></td>
-                         </td>
-                       </tr>
-                     </tbody>
-
-
-
-                     <?php                           
-                   }
-                   ?>
-                 </table> 
-                 <div class="col-md-12text-right">
-                  <label for="Pro_id" class="text-black">จำนวนสินค้า <span class="text-danger"></span></label>
-                  <strong class="text-black"><?php echo $SubTotle ?>กิโลกรัม</strong>
+                    </div>                            
+                    <!-- end body -->
+                  </div>
                 </div>
-                <div class="col-md-12text-right">
-                  <label for="Pro_id" class="text-black">ราคารวม <span class="text-danger"></span></label>
-                  <strong class="text-black"><?php echo $Total ?>กิโลกรัม</strong>
-                </div>
-              </div>
+              <?php }?> 
             </div>
+            <!-- //////////////////////////////////////////// -->
+            <div class="text-center mt-3"><a class="" href="order_show_addmin.php" >ดูทั้งหมด</a></div>
           </div>
-          <hr>
-        <?php } ?>                 
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 </div>
 
@@ -348,6 +380,5 @@
 <script src="js/aos.js"></script>
 
 <script src="js/main.js"></script>
-
 </body>
 </html>

@@ -12,6 +12,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
   $Pro_detail = $objResult["Pro_detail"];
   $Pro_property = $objResult["Pro_property"];
   $Pro_img = $objResult["Pro_img"];
+  $Pro_type = $objResult["Pro_type"];
 }
 ?>
 
@@ -136,72 +137,86 @@ while ($objResult = mysqli_fetch_array($objQuery)){
             <br>
 
 
-            <div class="action">
-             <div class="row">
-              <div class="col-md-4">
 
-                <button class="btn btn-primary btn-lg btn-block" onclick="window.location='detail_menu_pro.php?Pro_id=<?php echo $Pro_id?>'"/>วิธีทำอาหาร</button>
+
+            <?php
+            if ($Pro_type == 0) {?>
+             <div class="action">
+               <div class="row">
+                <div class="col-md-4">
+
+                 <button class="btn btn-primary btn-lg btn-block" onclick="window.location='detail_menu_pro.php?Pro_id=<?php echo $Pro_id?>'"/>วิธีทำอาหาร</button>
+               </div>
+               <div class="col-md-4">                
+                 <button class="btn btn-primary btn-lg btn-block" onclick="window.location='Property2_id.php?Pro_id=<?php echo $Pro_id ?>'"/>สรรพคุณ</button>
+               </div>
+               <div class="col-md-4">
+                <?php 
+                if (isset($_SESSION["ses_userid"])) {
+                 ?>
+                 <button class="btn  btn-lg btn-block" style="background-color: #ffc107" onclick="window.location='order_index.php?Pro_id=<?php echo $Pro_id?>'"/>เพิ่มในตะกร้า</button>
+               <?php }else {?>
+                 <button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #ffc107" data-toggle="modal" data-target="#exampleModalCenter"/>เพิ่มในตะกร้า</button>  <!--  onclick="window.location='login.php'" -->
+               <?php }?>
              </div>
-             <div class="col-md-4">                
-               <button class="btn btn-primary btn-lg btn-block" onclick="window.location='Property.php'"/>สรรพคุณ</button>
-             </div>
-             <div class="col-md-4">
+           </div>
+         <?php }else  {?> 
+          <div class="action">
+           <div class="row">
+            <div class="col-md-12">
+             <div class="col-md-12">
               <?php 
               if (isset($_SESSION["ses_userid"])) {
                ?>
-               <button class="btn btn-primary btn-lg btn-block" onclick="window.location='order_index.php?Pro_id=<?php echo $Pro_id?>'"/>เพิ่มในตะกร้า</button>
+               <button class="btn  btn-lg btn-block" style="background-color: #ffc107" onclick="window.location='order_index.php?Pro_id=<?php echo $Pro_id?>'"/>เพิ่มในตะกร้า</button>
              <?php }else {?>
-               <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter"/>เพิ่มในตะกร้า</button>  <!--  onclick="window.location='login.php'" -->
+               <button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #ffc107" data-toggle="modal" data-target="#exampleModalCenter"/>เพิ่มในตะกร้า</button>  <!--  onclick="window.location='login.php'" -->
              <?php }?>
            </div>
-         </div>
+         <?php }?>
+       </div>
 
-         <!--  <a href="order.php?Pro_id=<?php echo $Pro_id?>"> order</a> -->
-         <!--   <a href="test.php?Pro_id=<?php echo $Pro_id ?>" class="btn btn-black rounded-0  bg-danger">ดูสินค้า</a> -->
+       <!--  <a href="order.php?Pro_id=<?php echo $Pro_id?>"> order</a> -->
+       <!--   <a href="test.php?Pro_id=<?php echo $Pro_id ?>" class="btn btn-black rounded-0  bg-danger">ดูสินค้า</a> -->
 
 
-         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="check_login.php" method="post">
-                  <div class="form-group row">
-                    <div class="col-md-12">
-                      <label for="email" class="text-black">อีเมลล์ <span class="text-danger">*</span></label>
-                      <input type="email" class="form-control" id="email" name="email" placeholder="">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-md-12">
-                      <label for="password" class="text-black">รหัสผ่าน <span class="text-danger">*</span></label>
-                      <input type="Password" class="form-control" id="password" name="password">
-                    </div>
-                  </div>
-
-                </div>
-                <div class="modal-footer">
-                  <a href="login.php" class="col-md-8" style="margin-right:2px">สมัคสมาชิก </a>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Login</button>
-                </div>
-              </div>
+       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-          </div>
+            <div class="modal-body">
+              <form action="check_login.php" method="post">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="email" class="text-black">อีเมลล์ <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="password" class="text-black">รหัสผ่าน <span class="text-danger">*</span></label>
+                    <input type="Password" class="form-control" id="password" name="password">
+                  </div>
+                </div>
 
+              </div>
+              <div class="modal-footer">
+                <a href="login.php" class="col-md-8" style="margin-right:2px">สมัคสมาชิก </a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
-</div>
-</form>
-</div>
-</div>
 </div>
 
 
