@@ -61,8 +61,7 @@ if (!isset($_SESSION)) {
                   <li>
                     <a href="status.php" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ติดตามสินค้า</a>
                       <div class="dropdown-menu pb-0">
-                        <form class="dropdown-item pb-0" action="status.php" method="get">
-                          <h5>ติดตาม</h5>
+                        <form class="px-3 pb-0" action="status.php" method="get">
                           <div class="form-group">
                             <span style="color:#9E9C97">กรุณากรอกรหัสการสั่งซื้อของคุณ</span><br><br>
                             <input type="text" name="order_id" class="form-control form-control-sm" required><br>
