@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-      
+      </div>
 
 
       <div class="site-section" >
@@ -98,13 +98,16 @@
             </div>
           </div>
           <div class="row">
-           <div class="site-section">
+           <div class="site-section" style="width: 100%">
             <div class="container">
               <div class="row ">
                 <div class="col-md-12">
                   <form class="col-md-12" method="post">
                     <div class="site-blocks-table">
-                      <table class="table table-bordered">
+                      <div class="col-md-6">
+                      <a href="add_to_product.php" class="btn btn-primary btn-sm px-4 " style="margin-top: 10px;font-size: 18px ">เพิ่มสินค้า</a>
+                    </div><br>
+                      <table class="table table-bordered" width="100%">
                         <thead>
                           <tr>
                             <th class="product-price" >รหัสสินค้า</th>
@@ -139,14 +142,15 @@
                        echo "</table>";
                        ?>
                      </table>
-                     <div class="col-md-6">
-                      <a href="add_to_product.php" class="btn btn-primary btn-sm px-4" style="margin-top: 10px ">เพิ่มสินค้า</a>
-                    </div>
+                     
 
 
                   </div>
                 </form>
               </div>
+            </div>
+          </div>
+        </div></div></div></div></div>
 
 
 

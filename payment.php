@@ -147,137 +147,144 @@
   </div>
   <!-- panel preview -->
   <div class="col-lg-5">
-     <h6>ช่องทางการชำระเงิน</h6><br>
-    <div  style="display: flex; align-items: center; justify-content: center;">
-      <img src="images/payment2.jpg">
-    </div> <br>
+   <h6>ช่องทางการชำระเงิน</h6><br>
+   <div  style="display: flex; align-items: center; justify-content: center;">
+    <img src="images/payment2.jpg">
+  </div> <br>
 
-   
-
-    <form action="addpayment.php" method="post" enctype="multipart/form-data" name="form_payment">
-      <div class="panel panel-default">
-        <div class="panel-body form-horizontal payment-form">
-          <div class="form-group">
-            <label for="concept" class="col-sm-3 control-label">หมายเลขการสั่งซื้อ</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control" id="Order_id" name="Order_id" value="" required>
-            </div>
+  <form action="addpayment.php" name="form_payment" method="post" enctype="multipart/form-data" >
+    <div class="panel panel-default">
+      <div class="panel-body form-horizontal payment-form">
+        <div class="form-group">
+          <label for="concept" class="col-sm-3 control-label">หมายเลขการสั่งซื้อ</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="Order_iddd" name="Order_iddd" value="" required>
           </div>
-          <div class="form-group">
-            <label for="concept" class="col-sm-3 control-label">ยอดเงินที่โอน</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control" id="Pay_total" name="Pay_total" value="" required>
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="concept" class="col-sm-3 control-label">ยอดเงินที่โอน</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="Pay_total" name="Pay_total" value="" required>
           </div>
-          <div class="form-group">
-            <label for="concept" class="col-sm-3 control-label">ชื่อ-นามสกุล</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="User_name" name="User_name" value="" required>
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="concept" class="col-sm-3 control-label">ชื่อ-นามสกุล</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="User_name" name="User_name" value="" required>
           </div>
-          <div class="form-group">
-            <label for="description" class="col-sm-3 control-label">อีเมล์</label>
-            <div class="col-sm-9">
-              <input type="email" class="form-control" id="Pay_email" name="Pay_email" value="" required>
-            </div>
-          </div> 
-          <div class="form-group">
-            <label for="description" class="col-sm-3 control-label">เบอร์โทรศัพท์</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control" id="Pay_phon" name="Pay_phon" value="" required>
-            </div>
-          </div> 
+        </div>
+        <div class="form-group">
+          <label for="description" class="col-sm-3 control-label">อีเมล์</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="Pay_email" name="Pay_email" value="" required>
+          </div>
+        </div> 
+        <div class="form-group">
+          <label for="description" class="col-sm-3 control-label">เบอร์โทรศัพท์</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="Pay_phon" name="Pay_phon" value="" required>
+          </div>
+        </div> 
 
 
-          <div class="form-group">
-            <label for="status" class="col-sm-3 control-label" >ธนาคาร</label>
-            <div class="col-sm-9">
-              <select class="form-control" id="Pay_bank" name="Pay_bank" required>
-                <option></option>
-                <option>กรุงไทย 123-456-78 สาขาขอนเเก่น</option>
-                <option>กสิกร 123-456-78 สาขาขอนเเก่น</option>
-                <option>กรุงศรี 123-456-78 สาขาขอนเเก่น</option>
-                <option>ออมสิน 123-456-78 สาขาขอนเเก่น</option>
-                <option>ทหารไทย123-456-78 สาขาขอนเเก่น</option>
+        <div class="form-group">
+          <label for="status" class="col-sm-3 control-label" >ธนาคาร</label>
+          <div class="col-sm-9">
+           <!--  <select class="form-control" id="Pay_bank" name="Pay_bank" required>
+              <option></option>
+              <option>กรุงไทย 123-456-78 สาขาขอนเเก่น</option>
+              <option>กสิกร 123-456-78 สาขาขอนเเก่น</option>
+              <option>กรุงศรี 123-456-78 สาขาขอนเเก่น</option>
+              <option>ออมสิน 123-456-78 สาขาขอนเเก่น</option>
+              <option>ทหารไทย123-456-78 สาขาขอนเเก่น</option>
+            </select> -->
 
+            <input type="radio" id="Pay_bank1" name="Pay_bank" value="male">
+            <label for="male">กรุงไทย 123-456-78 สาขาขอนเเก่น</label><br>
+            <input type="radio" id="Pay_bank2" name="Pay_bank" value="female">
+            <label for="female">กสิกร 123-456-78 สาขาขอนเเก่น</label><br>
+            <input type="radio" id="Pay_bank3" name="Pay_bank" value="other">
+            <label for="other">กรุงศรี 123-456-78 สาขาขอนเเก่น</label><br>
+            <input type="radio" id="Pay_bank4" name="Pay_bank" value="other">
+            <label for="other">ออมสิน 123-456-78 สาขาขอนเเก่น</label><br>
+            <input type="radio" id="Pay_bank5" name="Pay_bank" value="other">
+            <label for="other">ทหารไทย123-456-78 สาขาขอนเเก่น</label>
+          </div>
+        </div> 
+        <div class="form-group">
+          <label for="date" class="col-sm-3 control-label">วันที่</label>
+          <div class="col-sm-9">
+            <input type="datetime-local" class="form-control" id="Pay_date" name="Pay_date" required>
+          </div>
+        </div>   
+        <div class="form-group">
+          <label for="date" class="col-sm-3 control-label">รูปภาพใบเสร็จการโอน</label>
+          <div class="col-sm-9"> 
+            <input type="file" name="fileToUpload" id="fileToUpload"  required>
+          </div>
+        </div><br>
+        <div class="form-group">
+          <div class="col-sm-9 text-right ">
+            <?php 
+            if (isset($_SESSION["ses_userid"])) {?>
+              <button type="submit" class="btn btn-primary btn-lg btn-block" >
+                <span class="glyphicon glyphicon-plus"></span> ยืนยันการชำระเงิน
+              </button>
 
-              </select>
-            </div>
-          </div> 
-          <div class="form-group">
-            <label for="date" class="col-sm-3 control-label">วันที่</label>
-            <div class="col-sm-9">
-              <input type="datetime-local" class="form-control" id="Pay_date" name="Pay_date" required>
-            </div>
-          </div>   
-          <div class="form-group">
-            <label for="date" class="col-sm-3 control-label">รูปภาพใบเสร็จการโอน</label>
-            <div class="col-sm-9"> 
-              <input type="file" name="fileToUpload" id="fileToUpload"  required>
-            </div>
-          </div><br>
-          <div class="form-group">
-            <div class="col-sm-9 text-right ">
-              <?php 
-              if (isset($_SESSION["ses_userid"])) {?>
-                <button type="submit" class="btn btn-primary btn-lg btn-block" >
-                  <span class="glyphicon glyphicon-plus"></span> ยืนยันการชำระเงิน
-                </button>
+            <?php }else { ?>
+             <button type="button" class="btn btn-primary btn-lg btn-block"  data-toggle="modal" data-target="#exampleModalCenter">
+              <span class="glyphicon glyphicon-plus"></span> ยืนยันการชำระเงิน
+            </button>
 
-              <?php }else { ?>
-                 <button type="button" class="btn btn-primary btn-lg btn-block"  data-toggle="modal" data-target="#exampleModalCenter">
-                  <span class="glyphicon glyphicon-plus"></span> ยืนยันการชำระเงิน
-                </button>
+          <?php }?>
+        </div>
+      </div></form>
 
-              <?php }?>
-              </div>
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-         
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form action="check_login.php" method="post">
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="email" class="text-black">อีเมลล์ <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="password" class="text-black">รหัสผ่าน <span class="text-danger">*</span></label>
-                        <input type="Password" class="form-control" id="password" name="password">
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <div class="modal-footer">
-                    <a href="login.php" class="col-md-5" style="margin-right:100px">สมัคสมาชิก </a>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Login</button>
+            <div class="modal-body">
+              <form action="check_login.php" method="post">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="email" class="text-black">อีเมลล์ <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="">
                   </div>
                 </div>
-              </div>
-            </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="password" class="text-black">รหัสผ่าน <span class="text-danger">*</span></label>
+                    <input type="Password" class="form-control" id="password" name="password">
+                  </div>
+                </div>
 
+              </div>
+              <div class="modal-footer">
+                <a href="login.php" class="col-md-5" style="margin-right:100px">สมัคสมาชิก </a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Login</button>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
+
       </div>
     </div>
+  </div>
+</div>            
+</div>
+</div>
 
 
 
 
-    <!-- / panel preview -->
+<!-- / panel preview -->
         <!-- <div class="row">
                   <div class="col-md-12">
                     <button class="btn btn-primary btn-lg btn-block" onclick="window.location='sowe_order.php'"/>ยืนยันสินค้า</button>
@@ -285,7 +292,10 @@
                 </div> -->
                 
 
-                <hr>
+                <br>
+                <br> 
+                <br>
+
 
 
 

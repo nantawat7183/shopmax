@@ -32,7 +32,7 @@ if(isset($_POST)){
        status  = 1
        WHERE Or_id = $Order_id";
        if (mysqli_query($conn,$sql2)){
-         header("Location: status.php ");
+         header("Location: status.php?order_id=". $_POST["Order_id"] );
          echo "insert success";
        }else{
         echo "fail status";

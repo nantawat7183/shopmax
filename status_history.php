@@ -190,7 +190,11 @@
                            </div>
                          </form>                        
                          <h6>ที่อยู่ : <?php echo $objResult['Or_address']; ?></h6>
-                         <h6>สถานะ : <?php echo  $status; ?></h6>
+                         <h6>สถานะ : <?php echo  $status; ?></h6> 
+                         <?php 
+                         if($objResult['status']==0){ ?> 
+                          <a href="payment2.php?Or_id=<?php echo $objResult['Or_id']; ?>" >ชำระเงิน</a>
+                             <?php  }?>
 
                          <?php 
                          if($objResult['status']==4){ ?>

@@ -167,7 +167,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="send_mail.php" method="post">
+        <form action="foget_password_action.php" method="post">
           <div class="form-group row">
             <div class="col-md-12">
               <label for="email" class="text-black">อีเมลล์ <span class="text-danger">*</span></label>

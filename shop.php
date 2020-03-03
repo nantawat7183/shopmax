@@ -32,12 +32,54 @@
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!------ Include the above in your HEAD tag ---------->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    
+    <style type="text/css">
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+      }
+
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+      }
+
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+    </style>
     
   </head>
   <body>
@@ -141,7 +183,7 @@
                      <ul class="social "> 
                       <?php 
                       if (isset($_SESSION["ses_userid"])) {?>
-                        <li><a href="order.php?Pro_id=<?php echo $objResult["Pro_id"];?>" data-tip="เพิ่มในตะกร้า"><i class="fa fa-shopping-bag " onclick="alert('คุณได้เพิ่มสินค้าไว้ในตะกร้าเเล้ว')"></i></a></li>
+                        <li><a href="javascript:void(0)" onclick="add_cart('<?php echo $objResult["Pro_id"];?>')" data-tip="เพิ่มในตะกร้า" ><i class="fa fa-shopping-bag "></i></a> </li>
                       <?php }else {?>
 
                         <li><a href="login.php" data-tip="เพิ่มในตะกร้า" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-shopping-bag " ></i></a></li>
@@ -150,12 +192,6 @@
                   </ul>
                 </div>
               </div>
-
-
-
-
-
-
               <?php 
             }}
             ?>
@@ -198,7 +234,7 @@
                        <ul class="social "> 
                         <?php 
                         if (isset($_SESSION["ses_userid"])) {?>
-                          <li><a href="order.php?Pro_id=<?php echo $objResult["Pro_id"];?>" data-tip="เพิ่มในตะกร้า"><i class="fa fa-shopping-bag " onclick="alert('คุณได้เพิ่มสินค้าไว้ในตะกร้าเเล้ว')"></i></a></li>
+                          <li><a href="javascript:void(0)" onclick="add_cart('<?=$objResult["Pro_id"];?>')" data-tip="เพิ่มในตะกร้า"><i class="fa fa-shopping-bag "></i></a></li>
                         <?php }else {?>
 
                           <li><a href="login.php" data-tip="เพิ่มในตะกร้า" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-shopping-bag " ></i></a></li>
@@ -326,15 +362,30 @@
   </footer>
 </div>
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
+<div id="snackbar">เพิ่มสินค้าสำเร็จ</div>
 
-<script src="js/main.js"></script>
+<script type="text/javascript">
+  function add_cart(pro_id){
+    url="order.php?Pro_id=<?php echo $objResult["Pro_id"];?>";
+    $.ajax({
+      url: url,
+      type: 'GET',
+      data: {'Pro_id':pro_id},
+      success: function(res) {
+        pro_qry=$('#cart_qty').html();
 
+        // location.reload();
+        $('#cart_qty').html(parseInt(pro_qry)+1);
+        toast();
+      }
+    });
+  }
+
+  function toast() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+</script>
 </body>
 </html>

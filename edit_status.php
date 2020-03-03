@@ -105,48 +105,49 @@
           </div>
         </div>
 
-        <?php
 
-        $strSQL =  "SELECT * FROM payment ,`order` where `order`.Or_id = payment.Or_id order by Pay_id desc";
-        $objQuery = mysqli_query($conn, $strSQL);  
-        while ($objResult = mysqli_fetch_array($objQuery)){
-          $Or_id = $objResult["Or_id"];
-          $Or_date = $objResult["Or_date"];
-          $Or_name = $objResult["Or_name"];
-          $Or_address = $objResult["Or_address"];
-          $Or_email = $objResult["Or_email"];
-          $UserID = $objResult["UserID"];
-          $status = $objResult["status"];
-          $Pay_id = $objResult["Pay_id"];
-          $Pay_bank = $objResult["Pay_bank"];
-          $Pay_date = $objResult["Pay_date"];
-          $Pay_img = $objResult["Pay_img"];
 
-          ?>
+        <div class="row">
+          <div class="site-section pt-2" style="padding-top: 8px; padding-bottom: 8px">
+            <div class="px-5">
+              <div class="row mb-5">
+                <form class="col-md-12" method="post">
+                  <div class="site-blocks-table">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th class="th-h" >รหัสผู้ใช้</th>
+                          <th class="th-h">รหัสสั่งซื้อ</th>
+                          <th class="th-h">รหัสชำระเงิน</th>
+                          <th class="th-h">ชื่อ</th> 
+                          <th class="th-h">ที่อยู่</th>
+                          <th class="th-h">อีเมลล์</th>
+                          <th class="th-h">ธนาคาร</th>
+                          <th class="th-h">วันที่ชำระเงิน</th>
+                          <th class="th-h">ใบเสร็จชำระเงิน</th>
+                          <th class="th-h">สถานะจัดส่ง</th>
+                          <th class="th-h">เเก้ไขสถานะ</th>
 
-          <div class="row">
-            <div class="site-section pt-2" style="padding-top: 8px; padding-bottom: 8px">
-              <div class="px-5">
-                <div class="row mb-5">
-                  <form class="col-md-12" method="post">
-                    <div class="site-blocks-table">
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th class="th-h" >รหัสผู้ใช้</th>
-                            <th class="th-h">รหัสสั่งซื้อ</th>
-                            <th class="th-h">รหัสชำระเงิน</th>
-                            <th class="th-h">ชื่อ</th> 
-                            <th class="th-h">ที่อยู่</th>
-                            <th class="th-h">อีเมลล์</th>
-                            <th class="th-h">ธนาคาร</th>
-                            <th class="th-h">วันที่ชำระเงิน</th>
-                            <th class="th-h">ใบเสร็จชำระเงิน</th>
-                            <th class="th-h">สถานะจัดส่ง</th>
-                            <th class="th-h">เเก้ไขสถานะ</th>
+                        </tr>
+                      </thead>
+                      <?php
 
-                          </tr>
-                        </thead>
+                      $strSQL =  "SELECT * FROM payment ,`order` where `order`.Or_id = payment.Or_id order by Pay_id desc";
+                      $objQuery = mysqli_query($conn, $strSQL);  
+                      while ($objResult = mysqli_fetch_array($objQuery)){
+                        $Or_id = $objResult["Or_id"];
+                        $Or_date = $objResult["Or_date"];
+                        $Or_name = $objResult["Or_name"];
+                        $Or_address = $objResult["Or_address"];
+                        $Or_email = $objResult["Or_email"];
+                        $UserID = $objResult["UserID"];
+                        $status = $objResult["status"];
+                        $Pay_id = $objResult["Pay_id"];
+                        $Pay_bank = $objResult["Pay_bank"];
+                        $Pay_date = $objResult["Pay_date"];
+                        $Pay_img = $objResult["Pay_img"];
+
+                        ?>
                         <tr>
                           <td style="size: 100%"><?php echo $UserID ?></td>
                           <td><?php echo $Or_id ?></td>
@@ -171,20 +172,21 @@
                           }?></td>
                           <td><button class=button1 ><a href="edit_to_status.php?Pay_id=<?php echo $Pay_id ?>&Or_id=<?php echo $Or_id ?>">เเก้ไข</a></button></a></td>
                         </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </form>
-              </div>
+                        <?php 
+                      }
+                      ?>  
+                    </tbody>
+                  </table>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-      <?php 
-    }
-    ?>    
+    </div>
 
-    <hr>
+
+   
 
 
 

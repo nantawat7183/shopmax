@@ -63,7 +63,7 @@
         <div class="container">
           <div class="row mb-5">
             <form class="col-md-12" method="post">
-              <div class="site-blocks-table">
+              <div class="site-blocks-table col-md-12">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
@@ -75,6 +75,7 @@
 
                     </tr>
                   </thead>
+                  <tbody>
                   <?php
                   $Total = 0;
                   $SumTotal = 0;
@@ -110,12 +111,13 @@
                     <td><?php echo number_format($Total,2);?></td>
 
                   </tr>
-                </tbody>
+                
 
                 <?php
 
               }
               ?>
+              </tbody>
             </table>
           </div>
         </form>

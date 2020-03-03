@@ -116,22 +116,37 @@
     <span class="sr-only">Next</span>
   </a>
 </div> -->
-<?php  
+<!-- <?php  
 $ses_userid = $_SESSION["ses_userid"];
 
 $strSQL = "SELECT * FROM user WHERE UserID= $ses_userid";
 $objQuery = mysqli_query($conn, $strSQL);
 while ($objResult = mysqli_fetch_array($objQuery)){
-
-  $f_name = $objResult["f_name"];
-  $l_name = $objResult["l_name"];
-  $addess = $objResult["addess"];
-  $email = $objResult["email"];
-  $U_tel = $objResult["U_tel"];
+  $f_name="";
+  if(isset($objResult["f_name"])){
+    $f_name = $objResult["f_name"];
+  }  
+  $l_name = "";
+  if(isset($objResult["l_name"])){
+    $l_name = $objResult["l_name"];
+  }
+  $addess = "";
+  if(isset($objResult["addess"])){
+    $addess = $objResult["addess"];
+  }
+  $email = "";
+  if(isset($objResult["email"])){
+    $email = $objResult["email"];
+  }
+  $U_tel = "";
+  if(isset($objResult["U_tel"])){
+    $U_tel = $objResult["U_tel"];
+  }
+  
 }
 
 ?>
-
+ -->
 
 
 
@@ -169,6 +184,31 @@ while ($objResult = mysqli_fetch_array($objQuery)){
     $strSQL = "SELECT * FROM `order` WHERE Or_id = '".$Or_id."' ";
     $objQuery = mysqli_query($conn,$strSQL);
     $objResult = mysqli_fetch_array($objQuery);
+    $Or_id="";
+    if(isset($objResult["Or_id"])){
+      $Or_id = $objResult["Or_id"];
+    }  
+     $l_name = "";
+    if(isset($objResult["l_name"])){
+      $l_name = $objResult["l_name"];
+    }
+    $Or_name="";
+    if(isset($objResult["Or_name"])){
+      $Or_name = $objResult["Or_name"];
+    }  
+    $Or_email = "";
+    if(isset($objResult["Or_email"])){
+      $Or_email = $objResult["Or_email"];
+    }
+    
+    $email = "";
+    if(isset($objResult["email"])){
+      $email = $objResult["email"];
+    }
+    $U_tel = "";
+    if(isset($objResult["U_tel"])){
+      $U_tel = $objResult["U_tel"];
+    }
 
     $Total = 0;
     $SumTotal = 0;
@@ -176,13 +216,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
     $strSQL_productlist = "SELECT * FROM `order_detail` WHERE Or_id=".$objResult['Or_id'];
     $objQuery_productlist = mysqli_query($conn,$strSQL_productlist)  or die(mysql_error());
-    while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
-      $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
-      $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
-      $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
-      $Total =  $Total+($objResult_productlist["Qty"] * $objResult_getProduct["Pro_price"]);
-      $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
-    }
+    
 
     ?>
     <h6>ช่องทางการชำระเงิน</h6><br>
@@ -202,59 +236,68 @@ while ($objResult = mysqli_fetch_array($objQuery)){
             <th class="product-quantity">จำนวน</th>
           </tr>
         </thead>
-        <tr>
-          <td >
-           <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
-         </td>
-         <td >
-           <?php echo $objResult_getProduct["Pro_name"];?>
-         </td>
-         <td> <?php echo $objResult_getProduct["Pro_price"];?></td>
-         <td><?php echo $objResult_productlist["Qty"];?></td>
-       </td>
-     </tr>
-   </tbody>
- </table><br>
+        <?php 
+        while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
+          $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
+          $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
+          $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
+          $Total =  $Total+($objResult_productlist["Qty"] * $objResult_getProduct["Pro_price"]);
+          $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
+          ?>
+          <tr>
+            <td >
+             <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
+           </td>
+           <td >
+             <?php echo $objResult_getProduct["Pro_name"];?>
+           </td>
+           <td> <?php echo $objResult_getProduct["Pro_price"];?></td>
+           
+           <td><?php echo $SubTotle ?></td>
+         <?php }?>
+       </tr>
+     </tbody>
+   </table><br>
 
- <form action="addpayment.php" method="post" enctype="multipart/form-data" name="form_payment">
-  <div class="panel panel-default">
-    <div class="panel-body form-horizontal payment-form">
-      <div class="form-group">
-        <label for="concept" class="col-sm-3 control-label">หมายเลขการสั่งซื้อ</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control" id="Order_id" name="Order_id" value="<?php echo $objResult['Or_id'];?>" required>
+   <form action="addpayment.php" method="post" enctype="multipart/form-data" name="form_payment">
+    <div class="panel panel-default">
+      <div class="panel-body form-horizontal payment-form">
+        <div class="form-group">
+          <label for="concept" class="col-sm-3 control-label">หมายเลขการสั่งซื้อ</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="Order_id" name="Order_id" value="<?php echo $objResult['Or_id'];?>" required>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="concept" class="col-sm-3 control-label">ยอดเงินที่โอน</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control" id="Pay_total" name="Pay_total" value="<?php echo $Total ?>" required>
+        <div class="form-group">
+          <label for="concept" class="col-sm-3 control-label">ยอดเงินที่โอน</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="Pay_total" name="Pay_total" value="<?php echo $Total ?>" required>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="concept" class="col-sm-3 control-label">ชื่อ-นามสกุล</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="User_name" name="User_name" value="<?php echo $objResult['Or_name']  ?>" required>
+        <div class="form-group">
+          <label for="concept" class="col-sm-3 control-label">ชื่อ-นามสกุล</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="User_name" name="User_name" value="<?php echo $objResult['Or_name']  ?>" required>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="description" class="col-sm-3 control-label">อีเมล์</label>
-        <div class="col-sm-9">
-          <input type="email" class="form-control" id="Pay_email" name="Pay_email" value="<?php echo  $objResult['Or_email']   ?>" required>
-        </div>
-      </div> 
-      <div class="form-group">
-        <label for="description" class="col-sm-3 control-label">เบอร์โทรศัพท์</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="Pay_phon" name="Pay_phon" value="<?php echo $U_tel    ?>" required>
-        </div>
-      </div> 
+        <div class="form-group">
+          <label for="description" class="col-sm-3 control-label">อีเมล์</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="Pay_email" name="Pay_email" value="<?php echo  $objResult['Or_email']   ?>" required>
+          </div>
+        </div> 
+        <div class="form-group">
+          <label for="description" class="col-sm-3 control-label">เบอร์โทรศัพท์</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="Pay_phon" name="Pay_phon" value="<?php echo $U_tel    ?>" required>
+          </div>
+        </div> 
 
 
-      <div class="form-group">
-        <label for="status" class="col-sm-3 control-label" >ธนาคาร</label>
-        <div class="col-sm-9">
-          <select class="form-control" id="Pay_bank" name="Pay_bank" required>
+        <div class="form-group">
+          <label for="status" class="col-sm-3 control-label" >ธนาคาร</label>
+          <div class="col-sm-9">
+          <!-- <select class="form-control" id="Pay_bank" name="Pay_bank" required>
             <option></option>
             <option>กรุงไทย 123-456-78 สาขาขอนเเก่น</option>
             <option>กสิกร 123-456-78 สาขาขอนเเก่น</option>
@@ -263,7 +306,17 @@ while ($objResult = mysqli_fetch_array($objQuery)){
             <option>ทหารไทย123-456-78 สาขาขอนเเก่น</option>
 
 
-          </select>
+          </select> -->
+          <input type="radio" id="Pay_bank1" name="Pay_bank" value="male">
+          <label for="male">กรุงไทย 123-456-78 สาขาขอนเเก่น</label><br>
+          <input type="radio" id="Pay_bank2" name="Pay_bank" value="female">
+          <label for="female">กสิกร 123-456-78 สาขาขอนเเก่น</label><br>
+          <input type="radio" id="Pay_bank3" name="Pay_bank" value="other">
+          <label for="other">กรุงศรี 123-456-78 สาขาขอนเเก่น</label><br>
+          <input type="radio" id="Pay_bank4" name="Pay_bank" value="other">
+          <label for="other">ออมสิน 123-456-78 สาขาขอนเเก่น</label><br>
+          <input type="radio" id="Pay_bank5" name="Pay_bank" value="other">
+          <label for="other">ทหารไทย123-456-78 สาขาขอนเเก่น</label>
         </div>
       </div> 
       <div class="form-group">
