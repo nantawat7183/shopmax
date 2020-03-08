@@ -102,7 +102,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <a href="add_menu.php" class="btn btn-primary btn-sm px-4 py-2" style="font-size: 18px;margin-left: 110px">เพิ่มสินค้า</a>
+          <a href="add_menu.php" class="btn btn-primary btn-sm px-4 py-2" style="font-size: 18px;margin-left: 110px">เพิ่มรายการอาหาร</a>
         </div>
 
 

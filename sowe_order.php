@@ -57,6 +57,7 @@
       $strSQL = "SELECT * FROM `order` WHERE Or_id = '".$_GET["Or_id"]."' ";
       $objQuery = mysqli_query($conn,$strSQL);
       $objResult = mysqli_fetch_array($objQuery);
+
       ?>
 
       <div class="site-section">
@@ -126,18 +127,6 @@
 
 
       <?php  
-      $ses_userid = $_SESSION["ses_userid"];
-
-      $strSQL = "SELECT * FROM user WHERE UserID= $ses_userid";
-      $objQuery = mysqli_query($conn, $strSQL);
-      while ($objResult = mysqli_fetch_array($objQuery)){
-
-        $f_name = $objResult["f_name"];
-        $l_name = $objResult["l_name"];
-        $addess = $objResult["addess"];
-        $email = $objResult["email"];
-         $U_tel = $objResult["U_tel"];
-      }
 
       ?>
 
@@ -160,10 +149,10 @@
           
           <div class="row">
             <div class="col-md-12">
-              <p type="text" id="textName" name="textName"><?php echo "ชื่อ: " . $f_name . " " .  $l_name ?></p>
-              <p name="textAddress" id="textAddress"><?php echo "ที่อยู่: " . $addess ?></p>
-              <p type="email"  id="textEmail" name="textEmail"><?php echo "อีเมลล์: " . $email ?></p>
-               <p type="text"  id="textU_tel" name="textU_tel"><?php echo "หมายเลขโทรศัพท์: " . $U_tel ?></p>
+              <p type="text" id="textName" name="textName"><?php echo "ชื่อ-นาามสกุล: ".$objResult["Or_name"]; ?></p>
+              <p name="textAddress" id="textAddress"><?php echo "ที่อยู่: " .$objResult["Or_address"];?></p>
+              <p type="email"  id="textEmail" name="textEmail"><?php echo "อีเมล์: " . $objResult["Or_email"];?></p>
+               <p type="text"  id="textU_tel" name="textU_tel"><?php echo "หมายเลขโทรศัพท์: " . $objResult["U_tel"];?></p>
               <!--  <a href='edit.php?UserId=$row[0]'>แก้ไข</a> <br><br><br> -->
               <div class="alert alert-danger text-center" style="padding: 50px; font-size: 20px;">
                 หมายเลขชำระเงิน : <b><?php echo $Or_id; ?></b>
@@ -186,7 +175,7 @@
         </div>
         <div class="col-md-6 pl-5">
           <div class="row justify-content-end">
-            <div class="col-md-7">
+            <div class="col-md-7"> 
               <div class="row">
                 <div class="col-md-12 text-right border-bottom mb-5">
                   <h3 class="text-black h4 text-uppercase">ยอดรวม</h3>

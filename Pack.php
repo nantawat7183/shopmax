@@ -1,73 +1,72 @@
 <?php include "connectdb.php"; ?>
 <?php include "check_session.php"; ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>ShopVegetable &mdash; Vegetable Shop Online</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/lib/w3.css">
+<head>
+  <title>ShopVegetable &mdash; Vegetable Shop Online</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/lib/w3.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 
-    <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
-    
-    <style>
-      .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        max-width: 800px;
-        padding-left:  5%;
-        padding-right:  5%;
-        padding-top: 3%;
-        padding-bottom: 3%;
-        margin: auto;
-        text-align: center;
-        font-family: arial;
-      }
 
-      .price {
-        color: grey;
-        font-size: 22px;
-      }
+  <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      padding-left:  5%;
+      padding-right:  5%;
+      padding-top: 3%;
+      padding-bottom: 3%;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }
 
-      .card button {
-        border: none;
-        outline: 0;
-        padding: 12px;
-        color: white;
-        background-color: #000;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-size: 18px;
-      }
+    .price {
+      color: grey;
+      font-size: 22px;
+    }
 
-      .card button:hover {
-        opacity: 0.7;
-      }
-    </style>
-    
-    
-  </head>
-  <body>
-  
+    .card button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .card button:hover {
+      opacity: 0.7;
+    }
+  </style>
+
+
+</head>
+<body>
+
   <div class="site-wrap">
-    
+
 
     <div class="site-navbar bg-white py-2">
 
@@ -79,87 +78,96 @@
           </form>  
         </div>
       </div>
-<?php include "Menu.php"; ?> 
+      <?php include "Menu.php"; ?> 
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="images/sli1.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="images/sli2.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="images/sli3.jpg" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-      
-     
- 
-  <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="title-section mb-5 col-12">
-            <h2 class="text-uppercase">เเพ็คเก็ทสินค้า 500 กรัม</h2>
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="images/sli1.jpg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/sli2.jpg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/sli3.jpg" alt="Third slide">
           </div>
         </div>
-        <div class="row">
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      
+
+
+      <div class="site-section">
+        <div class="container">
+          <div class="row">
+            <div class="title-section mb-5 col-12">
+              <h2 class="text-uppercase">เเพ็คเก็ทสินค้า 500 กรัม</h2>
+            </div>
+          </div>
+          <div class="row">
            <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-          <form class="col-md-12" method="post">
-            <div class="site-blocks-table">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th class="product-price">รหัสสินค้า</th>
-                    <th class="product-thumbnail">ชื่อสินค้า</th>
-                    <th class="product-name">รูปภาพ</th> 
-                    <th class="product-price">ชนิดผัก</th>
-                    
-                    
-                  </tr>
-                </thead>
-
- 
-                
-                <?php
-                               
-                 $sql1 = "SELECT * FROM product; ";
-                 $result = mysqli_query($conn,$sql1);
-                 while ($row = mysqli_fetch_row($result)) {
-                 echo "  <td>" . $row['0'] . "</td>";
-                echo "  <td>" . $row['1'] . "</td>";
-                echo "  <td><img style='height: 50px; width: 50px; margin:0px;'class='img-product' src=" . " ' " . $row['6'] . " ' " . "</td>";
-                // echo "  <td>" . $row['2'] ."บาท"." </td>";
-                echo "  <td><input type=checkbox name=vehicle1 class=button1 ><a href='product_edit2.php?Product_ID=".$row['0']."'></a></button></td>";
-               
-                echo "</tr>";
-
-}
-echo "</table>";
-?>
-      </table>
-      <div class="col-md-6">
-                <button class="btn btn-primary btn-sm px-4">เพิ่มสินค้า</button>
-              </div>
+            <div class="container">
+              <div class="row mb-5">
+                <div class="mb-5 card col-md-8 m-auto">
+                  <form id="form_pakage" action="Order_pack.php" method="get">
+                    <div id="package_list" class="row mb-2 px-4">
+                      
+                    </div>
+                    <button class="btn btn-sm btn-success"> ไส่ตะกร้า</button>
+                  </form> 
+                </div>
+                <form class="col-md-12" method="post">
+                  <div class="site-blocks-table">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th class="product-price">รหัสสินค้า</th>
+                          <th class="product-thumbnail">ชื่อสินค้า</th>
+                          <th class="product-name">รูปภาพ</th>
+                          <th class="product-price">น้ำหนัก</th> 
+                          <th class="product-price">ชนิดผัก</th>
 
 
-              <br> <br> <br> <br> <br> <br>
-   
+                        </tr>
+                      </thead>
+
+
+
+                      <?php
+
+                      $sql1 = "SELECT * FROM product; ";
+                      $result = mysqli_query($conn,$sql1);
+
+                      while ($row = mysqli_fetch_row($result)) { ?>
+                        <tr>  
+                          <td><?=$row['0']?></td>
+                          <td><?=$row['1']?></td>
+                          <td><img style='height: 50px; width: 50px; margin:0px;' class='img-product' src="<?=$row['6']?>"></td>
+                          <td><input type='text' id="input_pro_weight_<?=$row[0]?>" name='input_pro_weight[]' class='button1' value='100'></td>
+                          <td>
+                            <a href='javascript:void(0)' class='btn btn-success' onclick="add_package(<?=$row[0]?>,'<?=$row[1]?>',$('#input_pro_weight_<?=$row[0]?>').val())"> + </a>
+                          </td>
+                        </tr>
+                      <?php }?>
+                    </table>
+                    <div class="col-md-6">
+                      <button class="btn btn-primary btn-sm px-4">เพิ่มสินค้า</button>
+                    </div>
+
+
+                    <br> <br> <br> <br> <br> <br>
+
 
 
    <!--  <div class="site-blocks-cover" data-aos="fade">
@@ -179,9 +187,9 @@ echo "</table>";
       </div>
     </div> -->
 
-   
+
     
-   
+
 
     <footer class="site-footer custom-border-top">
       <div class="container">
@@ -238,9 +246,9 @@ echo "</table>";
         <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">
             <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
           
@@ -258,6 +266,41 @@ echo "</table>";
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-    
-  </body>
+  <script type="text/javascript">
+    const data_package=JSON.parse('[]');
+
+    function add_package(id_pro,name_pro,weight){
+      if(check_package_size()){
+        data_package.push({ "id_pro":id_pro, "name_pro":name_pro, "weight":weight});
+        package_init();
+      }else{
+        alert("เติม");
+      }
+      console.log(data_package);
+    }
+
+    function check_package_size(){
+      packsize=1000;
+      sum_size=0;
+      data_package.forEach(json_item => {
+        sum_size=sum_size+parseInt(json_item.weight);
+      });
+      console.log(sum_size);
+      if(sum_size >= packsize){// over size
+        return false;
+      }else{
+        return true;
+      }
+    }
+
+    function package_init(){
+      html_string="";
+      data_package.forEach(json_item => {
+        html_string+="<div class='col-12'><input type='hidden' class='form-control' name='Pro_id[]' value='"+json_item.id_pro+"'><input type='hidden' class='form-control' name='weight_pro[]' value="+json_item.weight+" readonly><span>"+json_item.name_pro+"</span><span>"+json_item.weight+"</span></div>";
+      });
+
+      $('#package_list').html(html_string);
+    }
+  </script>
+</body>
 </html>

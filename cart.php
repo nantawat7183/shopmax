@@ -111,7 +111,7 @@
                            <img src="<?php echo $objResult["Pro_img"];?>" alt="Image" class="img-fluid">
                          </td>
                          <td >
-                           <?php echo $objResult["Pro_name"];?>
+                           <?php echo $objResult["Pro_name"];?> | <?=$_SESSION["strWeight"][$i]?>
                          </td>
                          <td>
                           <?php

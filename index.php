@@ -246,26 +246,26 @@
             <div class="container">
               <div class="row">
                 <div class="title-section mb-5 col-12">
-                  <h2 class="text-uppercase">ความรู้สนใจ</h2>
+                  <h2 class="text-uppercase">เเพ้คเกจ</h2>
                 </div>
               </div>
               <div class="row align-items-stretch ">
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="menu_pro.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">S</span></a>
+                    <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">S</span></a>
                     <img src="images/j1.jpg" alt="Image" class="img-fluid">
                   </div>
                 </div>
               
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="menu_pro.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">M</span></a>
+                    <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">M</span></a>
                     <img src="images/j1.jpg" alt="Image" class="img-fluid">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="Property.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">L</span></a>
+                    <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">L</span></a>
                     <img src="images/vegan.jpg" alt="Image" class="img-fluid">
                   </div>
                 </div>
