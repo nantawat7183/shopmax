@@ -8,6 +8,7 @@ if(!isset($_SESSION["intLine"]))
 	 $_SESSION["intLine"] = 1;
 	 $_SESSION["strPro_id"][1] = $_GET["Pro_id"];
 	 $_SESSION["strQty"][1] = 1;
+    $_SESSION["strWeight"][1]=500;
 
 	 header("location:cart.php");
 }
@@ -27,6 +28,7 @@ else
 		 $intNewLine = $_SESSION["intLine"];
 		 $_SESSION["strPro_id"][$intNewLine] = $_GET["Pro_id"];
 		 $_SESSION["strQty"][$intNewLine] = 1;
+        $_SESSION["strWeight"][$intNewLine] = 500;
 	}
 	
 	 header("location:shop.php");
