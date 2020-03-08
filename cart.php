@@ -25,11 +25,7 @@
 
 </head>
 <body>
-
-
   <div class="site-wrap">
-
-
     <div class="site-navbar bg-white py-2">
 
       <div class="search-wrap">
@@ -62,12 +58,7 @@
           <?php
           exit();
         }
-
-
         ?> 
-
-
-
 
         <div class="site-section">
           <div class="container">
@@ -81,6 +72,7 @@
                         <th class="product-thumbnail">รูปภาพ</th>
                         <th class="product-name">ชื่อสินค้า</th> 
                         <th class="product-price">ราคา</th>
+                        <th class="product-price">น้ำหนัก</th>
                         <th class="product-quantity">จำนวน</th>
                         <th class="product-total">ราคารวม</th>
                         <th class="product-remove">ลบสินค้า</th>
@@ -91,16 +83,14 @@
                     $SumTotal = 0;
                     $SubTotle = 0; 
 
-                    for($i=1;$i<=(int)$_SESSION["intLine"];$i++)
-                    {
-                      if($_SESSION["strPro_id"][$i] != "")
-                      {
+                    for($i=1;$i<=(int)$_SESSION["intLine"];$i++){
+                      if($_SESSION["strPro_id"][$i] != ""){
                         $strSQL = "SELECT * FROM product  WHERE Pro_id = '".$_SESSION["strPro_id"][$i]."' ";
                         $objQuery = mysqli_query($conn,$strSQL)  or die(mysql_error());
                         $objResult = mysqli_fetch_array($objQuery);
-                        $Total = $_SESSION["strQty"][$i] * $objResult["Pro_price"];
+                        $Total = $_SESSION["strQty"][$i] * ($objResult["Pro_price"] * ($_SESSION["strWeight"][$i] / 100));
                         $SumTotal = $SumTotal + $Total;
-                        $SubTotle = $SubTotle +  $_SESSION["strQty"][$i];
+                        $SubTotle = $SubTotle + $_SESSION["strQty"][$i];
 
                         ?>
                         <tr>
@@ -111,16 +101,17 @@
                            <img src="<?php echo $objResult["Pro_img"];?>" alt="Image" class="img-fluid">
                          </td>
                          <td >
-                           <?php echo $objResult["Pro_name"];?> | <?=$_SESSION["strWeight"][$i]?>
+                           <?php echo $objResult["Pro_name"];?>
                          </td>
                          <td>
                           <?php
                           echo $objResult["Pro_price"];
                           if($objResult["Pro_type"]==0){
-                            echo "บาท/กรัม";
+                            echo " บาท/100กรัม";
                           }else{ echo "บาท/ชุด";}
                           ?>
                         </td>
+                        <td><?=$_SESSION["strWeight"][$i]?></td>
                         <td><?php echo $_SESSION["strQty"][$i];?></td>
                         <td><?php echo number_format($Total,2);?></td>
                         <td><a href="delete.php?Line=<?php echo $i;?>" class="btn btn-primary height-auto btn-sm">X</a></td>

@@ -1,24 +1,4 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <style type="text/css">
-    body{
-      padding:0px 0px 0px 0px;
-      margin: 0px 0px 0px 0px;
-    }
-    .loading{
-      width: 100%;
-      height: auto;
-      position: fixed;
-      z-index: 9999;
-    }
-  </style>
-</head>
-<body>
-<img src="images/loading.gif" class="loading">
-</body>
-</html> -->
+
 <? ob_start();?>
 <?php include "connectdb.php"; ?>
 <?php include "check_session.php"; ?>
@@ -36,15 +16,10 @@ VALUES
 mysqli_query($conn,$strSQL);
 
 
-  /*$test = "INSERT INTO order(Or_date,Or_name,Or_address,Or_email,UserID)
-  VALUES
-  ('10','test','test','testMail',123) ";
-  mysqli_query($conn,$test);*/
   $strOr_id = mysqli_insert_id($conn);
   for($i=0;$i<=(int)$_SESSION["intLine"];$i++){
     if($_SESSION["strPro_id"][$i] != ""){
-     $strSQL = " INSERT INTO order_detail( Or_id,Pro_id,Qty) VALUES  ('".$strOr_id."','".$_SESSION["strPro_id"][$i]."','".$_SESSION["strQty"][$i]."') 
-     ";
+     $strSQL = " INSERT INTO order_detail( Or_id,Pro_id,Qty,weight) VALUES  ('{$strOr_id}','{$_SESSION["strPro_id"][$i]}','{$_SESSION["strQty"][$i]}','{$_SESSION["strWeight"][$i]}')";
      mysqli_query($conn,$strSQL);
 
 
