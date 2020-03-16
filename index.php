@@ -253,20 +253,20 @@
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
                     <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">S</span></a>
-                    <img src="images/j1.jpg" alt="Image" class="img-fluid">
+                    <img src="images/sizeS.jpg" alt="Image" class="img-fluid">
                   </div>
                 </div>
               
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
                     <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">M</span></a>
-                    <img src="images/j1.jpg" alt="Image" class="img-fluid">
+                    <img src="images/pack1.png" alt="Image" class="img-fluid">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
                     <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">L</span></a>
-                    <img src="images/vegan.jpg" alt="Image" class="img-fluid">
+                    <img src="images/pack2.png" alt="Image" class="img-fluid">
                   </div>
                 </div>
               </div>

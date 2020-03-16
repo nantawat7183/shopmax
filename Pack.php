@@ -116,23 +116,23 @@
             </div>
           </div>
           <div class="row">
-           <div class="site-section">
+           <div class="site-section" style="width: 100%">
             <div class="container">
               <div class="row mb-5">
-                <div class="mb-5 card col-md-8 m-auto">
+                <div id="box-list-product" class="mb-5 card col-md-8 m-auto">
                   <form id="form_pakage" action="Order_pack.php" method="get">
                     <div id="package_list" class="row mb-2 px-4">
-                      
+
                     </div>
                     <button class="btn btn-sm btn-success"> ไส่ตะกร้า</button>
                   </form> 
                 </div>
-                <form class="col-md-12" method="post">
+                <form class="col-md-12 mt-5" method="post" >
                   <div class="site-blocks-table">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" width="100%">
                       <thead>
                         <tr>
-                          <th class="product-price">รหัสสินค้า</th>
+                          <th class="product-price" style="m">รหัสสินค้า</th>
                           <th class="product-thumbnail">ชื่อสินค้า</th>
                           <th class="product-name">รูปภาพ</th>
                           <th class="product-price">น้ำหนัก</th> 
@@ -148,26 +148,34 @@
 
                       $sql1 = "SELECT * FROM product; ";
                       $result = mysqli_query($conn,$sql1);
+                      $Pro_type_pack ='0';          
+                      while ($row = mysqli_fetch_row($result)) {
+                        if($row['7']==$Pro_type_pack){
 
-                      while ($row = mysqli_fetch_row($result)) { ?>
+                         ?>
                         <tr>  
                           <td><?=$row['0']?></td>
                           <td><?=$row['1']?></td>
                           <td><img style='height: 50px; width: 50px; margin:0px;' class='img-product' src="<?=$row['6']?>"></td>
                           <td><input type='text' id="input_pro_weight_<?=$row[0]?>" name='input_pro_weight[]' class='button1' value='100'></td>
                           <td>
+
                             <a href='javascript:void(0)' class='btn btn-success' onclick="add_package(<?=$row[0]?>,'<?=$row[1]?>',$('#input_pro_weight_<?=$row[0]?>').val())"> + </a>
                           </td>
                         </tr>
-                      <?php }?>
+                      <?php }}?>
                     </table>
-                    <div class="col-md-6">
-                      <button class="btn btn-primary btn-sm px-4">เพิ่มสินค้า</button>
-                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div></div></div></div></div>
+                    
 
 
-                    <br> <br> <br> <br> <br> <br>
-
+                    
 
 
    <!--  <div class="site-blocks-cover" data-aos="fade">
@@ -268,10 +276,17 @@
   <script src="js/main.js"></script>
   <script type="text/javascript">
     const data_package=JSON.parse('[]');
+    $('#box-list-product').hide();
 
     function add_package(id_pro,name_pro,weight){
+      $('#box-list-product').show();
       if(check_package_size()){
-        data_package.push({ "id_pro":id_pro, "name_pro":name_pro, "weight":weight});
+        item = data_package.find(obj => obj.id_pro==id_pro);
+        if (item !== undefined){
+          item.weight=parseInt(item.weight)+parseInt(weight);
+        }else{
+          data_package.push({ "id_pro":id_pro, "name_pro":name_pro, "weight":weight});
+        }
         package_init();
       }else{
         alert("เติม");
@@ -293,10 +308,23 @@
       }
     }
 
+    function delete_package(id_pro,elm){
+      console.log(id_pro);
+      var index = data_package.findIndex(obj => obj.id_pro==id_pro);
+      console.log(index);
+      if (index !== undefined) data_package.splice(index, 1);
+      console.log(data_package);
+      elm.parentNode.parentNode.parentNode.removeChild(elm.parentNode.parentNode);
+
+      if(data_package.length == 0){
+        $('#box-list-product').hide();
+      }
+    }
+
     function package_init(){
       html_string="";
       data_package.forEach(json_item => {
-        html_string+="<div class='col-12'><input type='hidden' class='form-control' name='Pro_id[]' value='"+json_item.id_pro+"'><input type='hidden' class='form-control' name='weight_pro[]' value="+json_item.weight+" readonly><span>"+json_item.name_pro+"</span><span>"+json_item.weight+"</span></div>";
+        html_string+="<div class='row col-md-12'><div class='col-md-6'><input type='hidden' class='form-control' name='Pro_id[]' value='"+json_item.id_pro+"'><input type='hidden' class='form-control' name='weight_pro[]' value="+json_item.weight+" readonly>"+json_item.name_pro+"</div><div class='col-md-5'>จำนวน "+json_item.weight+"กรัม</div><div class='col-md-1'> <a href='javascript:void(0)' onClick='delete_package("+json_item.id_pro+",this)'> X </a> </div></div>";
       });
 
       $('#package_list').html(html_string);
