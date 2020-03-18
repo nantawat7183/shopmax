@@ -22,7 +22,8 @@ if(isset($_POST)){
   $query  = mysqli_query($conn,$sql);   
       // $last_id = $conn->insert_id;   
   if($query){
-    header("Location: status.php");
+    // header("Location: status_history.php");
+    echo "<script>window.history.back()</script>";
   }else{
     $msg = "ไม่สามารถป้อนข้อมูลได้ ";
     echo $msg."<br>";

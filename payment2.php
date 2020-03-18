@@ -65,6 +65,9 @@
       .card button:hover {
         opacity: 0.7;
       }
+      th{
+        font-size: 16px !important;
+      }
     </style>
     
   </head>
@@ -146,7 +149,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 }
 
 ?>
- -->
+-->
 
 
 
@@ -173,45 +176,21 @@ while ($objResult = mysqli_fetch_array($objQuery)){
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <legend></legend>
   </div>
   <!-- panel preview -->
-  <div class="col-lg-5">
+  <div class="col-lg-6">
 
     <?php
     $Or_id = $_GET['Or_id'];
     $strSQL = "SELECT * FROM `order` WHERE Or_id = '".$Or_id."' ";
     $objQuery = mysqli_query($conn,$strSQL);
     $objResult = mysqli_fetch_array($objQuery);
-    $Or_id="";
-    if(isset($objResult["Or_id"])){
-      $Or_id = $objResult["Or_id"];
-    }  
-     $l_name = "";
-    if(isset($objResult["l_name"])){
-      $l_name = $objResult["l_name"];
-    }
-    $Or_name="";
-    if(isset($objResult["Or_name"])){
-      $Or_name = $objResult["Or_name"];
-    }  
-    $Or_email = "";
-    if(isset($objResult["Or_email"])){
-      $Or_email = $objResult["Or_email"];
-    }
     
-    $email = "";
-    if(isset($objResult["email"])){
-      $email = $objResult["email"];
-    }
-    $U_tel = "";
-    if(isset($objResult["U_tel"])){
-      $U_tel = $objResult["U_tel"];
-    }
 
     $Total = 0;
-    $SumTotal = 0;
+    $SumTotle = 0;
     $SubTotle = 0; 
 
     $strSQL_productlist = "SELECT * FROM `order_detail` WHERE Or_id=".$objResult['Or_id'];
@@ -220,20 +199,23 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
     ?>
     <h6>ช่องทางการชำระเงิน</h6><br>
-    <div  style="display: flex; align-items: center; justify-content: center;">
-      <img src="images/payment2.jpg">
+    <div  style="display: flex; align-items: center; justify-content: center;" >
+      <img src="images/bank.jpg" width="500" style="border: dashed 1px #000;">
     </div> <br>
 
     <h6>รายการสินค้า</h6>
     
-    <div class="site-blocks-table">
-      <table class="table table-bordered table-hover">
+    <div class="">
+      <table class="table table-bordered">
         <thead>
-          <tr style="padding: 2px">
+          <tr style="padding: 2px; ">
+            <th class="product-thumbnail">รหัสสินค้า</th>
             <th class="product-thumbnail">รูปภาพ</th>
             <th class="product-name">ชื่อสินค้า</th> 
             <th class="product-price">ราคา</th>
+            <th class="product-price">น้ำหนัก</th>
             <th class="product-quantity">จำนวน</th>
+            <th class="product-quantity">ราคารวม(บาท)</th>
           </tr>
         </thead>
         <?php 
@@ -241,62 +223,70 @@ while ($objResult = mysqli_fetch_array($objQuery)){
           $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
           $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
           $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
-          $Total =  $Total+($objResult_productlist["Qty"] * $objResult_getProduct["Pro_price"]);
-          $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
+          $Total =  $objResult_productlist["Qty"] * ($objResult_getProduct["Pro_price"] * ($objResult_productlist["weight"]/100));
+          $SumTotle = $SumTotle +  $Total;
           ?>
           <tr>
+            <td><?php echo $objResult_getProduct["Pro_id"];?></td>
             <td >
              <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
            </td>
            <td >
              <?php echo $objResult_getProduct["Pro_name"];?>
            </td>
-           <td> <?php echo $objResult_getProduct["Pro_price"];?></td>
-           
-           <td><?php echo $SubTotle ?></td>
-         <?php }?>
-       </tr>
-     </tbody>
-   </table><br>
+           <td> <?php echo $objResult_getProduct["Pro_price"]; if($objResult_getProduct["Pro_type"]==0){
+            echo " บาท/100กรัม";
+          }else{ echo "บาท/ชุด";}
+          ?></td>
+          <td >
+           <?php echo $objResult_productlist["weight"];?>
+         </td>
+         <td><?php echo $objResult_productlist["Qty"] ?></td>
+         <td> <?php echo $Total; ?></td>
+       <?php }?>
+     </tr>
+   </tbody>
+ </table>
+ <h6>ราคาสุทธิ <?php echo  $SumTotle ?>.บาท</h6><br>
 
-   <form action="addpayment.php" method="post" enctype="multipart/form-data" name="form_payment">
-    <div class="panel panel-default">
-      <div class="panel-body form-horizontal payment-form">
-        <div class="form-group">
-          <label for="concept" class="col-sm-3 control-label">หมายเลขการสั่งซื้อ</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" id="Order_id" name="Order_id" value="<?php echo $objResult['Or_id'];?>" required>
-          </div>
+ <form action="addpayment.php" method="post" enctype="multipart/form-data" name="form_payment">
+  <div class="panel panel-default">
+    <div class="panel-body form-horizontal payment-form">
+      <div class="form-group">
+        <label for="concept" class="col-sm-3 control-label">หมายเลขการสั่งซื้อ</label>
+        <div class="col-sm-12">
+          <input type="number" class="form-control" id="Order_id" name="Order_id" value="<?php echo $objResult['Or_id'];?>" required>
         </div>
-        <div class="form-group">
-          <label for="concept" class="col-sm-3 control-label">ยอดเงินที่โอน</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" id="Pay_total" name="Pay_total" value="<?php echo $Total ?>" required>
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="concept" class="col-sm-3 control-label">ยอดเงินที่โอน</label>
+        <div class="col-sm-12">
+          <input type="number" class="form-control" id="Pay_total" name="Pay_total" value="<?php echo $Total ?>" required>
         </div>
-        <div class="form-group">
-          <label for="concept" class="col-sm-3 control-label">ชื่อ-นามสกุล</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="User_name" name="User_name" value="<?php echo $objResult['Or_name']  ?>" required>
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="concept" class="col-sm-3 control-label">ชื่อ-นามสกุล</label>
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="User_name" name="User_name" value="<?php echo $objResult['Or_name']  ?>" required>
         </div>
-        <div class="form-group">
-          <label for="description" class="col-sm-3 control-label">อีเมล์</label>
-          <div class="col-sm-9">
-            <input type="email" class="form-control" id="Pay_email" name="Pay_email" value="<?php echo  $objResult['Or_email']   ?>" required>
-          </div>
-        </div> 
-        <div class="form-group">
-          <label for="description" class="col-sm-3 control-label">เบอร์โทรศัพท์</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="Pay_phon" name="Pay_phon" value="<?php echo $U_tel    ?>" required>
-          </div>
-        </div> 
+      </div>
+      <div class="form-group">
+        <label for="description" class="col-sm-3 control-label">อีเมล์</label>
+        <div class="col-sm-12">
+          <input type="email" class="form-control" id="Pay_email" name="Pay_email" value="<?php echo  $objResult['Or_email']   ?>" required>
+        </div>
+      </div> 
+      <div class="form-group">
+        <label for="description" class="col-sm-3 control-label">เบอร์โทรศัพท์</label>
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="Pay_phon" name="Pay_phon" value="<?php echo $U_tel    ?>" required>
+        </div>
+      </div> 
 
 
-        <div class="form-group">
-          <label for="status" class="col-sm-3 control-label" >ธนาคาร</label>
-          <div class="col-sm-9">
+      <div class="form-group">
+        <label for="status" class="col-sm-3 control-label" >ธนาคาร</label>
+        <div class="col-sm-9">
           <!-- <select class="form-control" id="Pay_bank" name="Pay_bank" required>
             <option></option>
             <option>กรุงไทย 123-456-78 สาขาขอนเเก่น</option>
@@ -307,16 +297,10 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
 
           </select> -->
-          <input type="radio" id="Pay_bank1" name="Pay_bank" value="male">
+          <input type="radio" id="Pay_bank1" name="Pay_bank" value="ธนาคารทหารไทย 335-7-81136 สาขาขอนเเก่น">
           <label for="male">กรุงไทย 123-456-78 สาขาขอนเเก่น</label><br>
-          <input type="radio" id="Pay_bank2" name="Pay_bank" value="female">
-          <label for="female">กสิกร 123-456-78 สาขาขอนเเก่น</label><br>
-          <input type="radio" id="Pay_bank3" name="Pay_bank" value="other">
-          <label for="other">กรุงศรี 123-456-78 สาขาขอนเเก่น</label><br>
-          <input type="radio" id="Pay_bank4" name="Pay_bank" value="other">
-          <label for="other">ออมสิน 123-456-78 สาขาขอนเเก่น</label><br>
-          <input type="radio" id="Pay_bank5" name="Pay_bank" value="other">
-          <label for="other">ทหารไทย123-456-78 สาขาขอนเเก่น</label>
+          <input type="radio" id="Pay_bank2" name="Pay_bank" value="กรุงไทย 123-456-78 สาขาขอนเเก่น">
+          <label for="female">พร้อมเพย์ 099-208-7183 </label><br>
         </div>
       </div> 
       <div class="form-group">
@@ -332,7 +316,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
         </div>
       </div><br>
       <div class="form-group">
-        <div class="col-sm-9 text-right ">
+        <div class="col-sm-12 text-right ">
           <?php 
           if (isset($_SESSION["ses_userid"])) {?>
             <button type="submit" class="btn btn-primary btn-lg btn-block" >
@@ -401,74 +385,10 @@ while ($objResult = mysqli_fetch_array($objQuery)){
                 </div> -->
                 
 
-                <br><br>
 
 
 
-                <footer class="site-footer custom-border-top">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                        <h3 class="footer-heading mb-4">OUR SHOP</h3>
-                        <a href="#" class="block-6">
-                          <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-                          <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-                          <p>Open now  &mdash;  April 20, 2019</p>
-                        </a>
-                      </div>
-                      <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <h3 class="footer-heading mb-4">Quick Links</h3>
-                          </div>
-                          <div class="col-md-6 col-lg-4">
-                            <ul class="list-unstyled">
-                              <li><a href="#">Sell online</a></li>
-                              <li><a href="#">Features</a></li>
-                              <li><a href="#">Shopping cart</a></li>
-                              <li><a href="#">Store builder</a></li>
-                            </ul>
-                          </div>
-                          <div class="col-md-6 col-lg-4">
-                            <ul class="list-unstyled">
-                              <li><a href="#">Mobile commerce</a></li>
-                              <li><a href="#">Dropshipping</a></li>
-                              <li><a href="#">Website development</a></li>
-                            </ul>
-                          </div>
-                          <div class="col-md-6 col-lg-4">
-                            <ul class="list-unstyled">
-                              <li><a href="#">Point of sale</a></li>
-                              <li><a href="#">Hardware</a></li>
-                              <li><a href="#">Software</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 col-lg-3">
-                        <div class="block-5 mb-5">
-                          <h3 class="footer-heading mb-4">Contact Info</h3>
-                          <ul class="list-unstyled">
-                            <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-                            <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                            <li class="email">n.kanrutai@kkumail.com</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row pt-5 mt-5 text-center">
-                      <div class="col-md-12">
-                        <p>
-                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
-                      </div>
-
-                    </div>
-                  </div>
-                </footer>
+                <?php include("footter.php");?>
               </div>
 
               <script src="js/jquery-3.3.1.min.js"></script>

@@ -173,6 +173,7 @@
                 </a>
                 <h2 class="item-title">รหัสสินค้า:<?php echo $Pro_id ?></a></h2>
                 <h2 class="item-title"><?php echo $Pro_name ?></a></h2>
+                 <h2 class="item-title">น้ำหนัก 500กรัม</a></h2>
                 <strong class="item-price">ราคา: <?php echo $Pro_price ?>บาท/100กรัม</strong>
                 <div class="star-rating">
                   <span class="icon-star2 text-warning"></span>
@@ -182,7 +183,7 @@
                   <span class="icon-star2 text-warning"></span>
                 </div>
                 <span>
-                  <a href="test.php?Pro_id=<?php echo $Pro_id ?>" class="btn btn-black rounded-0  bg-danger">ดูสินค้า</a>
+                  <a href="detail_index.php?Pro_id=<?php echo $Pro_id ?>" class="btn btn-black rounded-0  bg-danger">ดูสินค้า</a>
                 </span>
               </div>
               <?php 
@@ -191,10 +192,10 @@
           </div>
         </div>
 
-        <div class="site-section">
+      <!--   <div class="site-section">
           <div class="container">
             <div class="title-section mb-12">
-              <h2 class="text-uppercase"><span class="d-block">เเพ็คเกจ</span></h2>
+              <h2 class="text-uppercase"><span class="d-block">ชุดผัก</span></h2>
             </div>
             <br><br>
             <div class="row align-items-stretch">
@@ -229,7 +230,7 @@
                       <span class="icon-star2 text-warning"></span>
                     </div>
                     <span>
-                      <a href="test.php?Pro_id=<?php echo $Pro_id ?>" class="btn btn-black rounded-0  bg-danger">ดูสินค้า</a>
+                      <a href="detail_index.php?Pro_id=<?php echo $Pro_id ?>" class="btn btn-black rounded-0  bg-danger">ดูสินค้า</a>
                     </span>
                   </div>
 
@@ -240,32 +241,32 @@
               </div>
             </div>
           </div>
-
+ -->
 
           <div class="site-section" style="padding-top: 10px; padding-bottom:20px  ">
             <div class="container">
               <div class="row">
                 <div class="title-section mb-5 col-12">
-                  <h2 class="text-uppercase">เเพ้คเกจ</h2>
+                  <h2 class="text-uppercase">เเพ็คเกจ</h2>
                 </div>
               </div>
               <div class="row align-items-stretch ">
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">S</span></a>
+                    <a href="Pack.php?pack_size=1000" class="product-category bg-light" style=" color: #219fed";>ไซต์ <span style=" color:#808080;font-size: 15px">S</span></a>
                     <img src="images/sizeS.jpg" alt="Image" class="img-fluid">
                   </div>
                 </div>
               
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">M</span></a>
+                    <a href="Pack.php?pack_size=2000" class="product-category bg-light" style=" color: #219fed";>ไซต์ <span style=" color:#808080;font-size: 15px">M</span></a>
                     <img src="images/pack1.png" alt="Image" class="img-fluid">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="product-item sm-height bg-gray ">
-                    <a href="Pack.php" class="product-category bg-light" style=" color: #FFA500";>ไซต์ <span style=" color:#808080;font-size: 15px">L</span></a>
+                    <a href="Pack.php?pack_size=4000" class="product-category bg-light" style=" color: #219fed";>ไซต์ <span style=" color:#808080;font-size: 15px">L</span></a>
                     <img src="images/pack2.png" alt="Image" class="img-fluid">
                   </div>
                 </div>
@@ -329,70 +330,7 @@
 </div>
 
 
-<footer class="site-footer custom-border-top">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-        <h3 class="footer-heading mb-4">OUR SHOP</h3>
-        <a href="#" class="block-6">
-          <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-          <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-          <p>Open now  &mdash;  April 20, 2019</p>
-        </a>
-      </div>
-      <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="footer-heading mb-4">Quick Links</h3>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <ul class="list-unstyled">
-              <li><a href="#">Sell online</a></li>
-              <li><a href="#">Features</a></li>
-              <li><a href="#">Shopping cart</a></li>
-              <li><a href="#">Store builder</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <ul class="list-unstyled">
-              <li><a href="#">Mobile commerce</a></li>
-              <li><a href="#">Dropshipping</a></li>
-              <li><a href="#">Website development</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <ul class="list-unstyled">
-              <li><a href="#">Point of sale</a></li>
-              <li><a href="#">Hardware</a></li>
-              <li><a href="#">Software</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="block-5 mb-5">
-          <h3 class="footer-heading mb-4">Contact Info</h3>
-          <ul class="list-unstyled">
-            <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-            <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-            <li class="email">n.kanrutai@kkumail.com</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-5 mt-5 text-center">
-      <div class="col-md-12">
-        <p>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
-      </div>
-
-    </div>
-  </div>
-</footer>
+ <?php include("footter.php");?>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

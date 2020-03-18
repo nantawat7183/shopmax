@@ -107,6 +107,31 @@ try {
       }
     }
     $html_content = $html_content."</tbody></table><br><h3>ราคาสุทธิ์ {$SumTotal}</h3>";
+    $html_content = $html_content."<h2>ช่องทางในการชำระเงิน</h2><br>
+    <table border='1' width='500px'>
+    <thead>
+    <tr>
+    <th>ธนาคาร</th>
+    <th>ชื่อบัญชี</th> 
+    <th>เลขที่บัญชี</th>  
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>ธนาคารทหารไทย</td>
+    <td>นันทวัฒน์ ดวงมาลัย</td> 
+    <td>335-7-811136</td>  
+    </tr>
+     <tr>
+    <td>พร้อมเพย์</td>
+    <td>นันทวัฒน์ ดวงมาลัย</td> 
+    <td>097-207-5037</td>  
+    </tr>
+    </thead>
+    </table>
+
+    " ;
+     $html_content = $html_content."<h3><a href='localhost/shopmax/payment2.php?Or_id=".$or_id."' >ชำระเงิน</a></h3><br><h3>ชื่อ:".$_POST["textName"]." </h3>ที่อยู่ในการจัดส่ง:".$_POST["textAddress"]."</h3>";
     $mail->Body = $html_content;
 
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

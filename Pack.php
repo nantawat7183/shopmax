@@ -79,7 +79,7 @@
         </div>
       </div>
       <?php include "Menu.php"; ?> 
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -104,19 +104,20 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-      </div>
+      </div> -->
+
       
 
 
       <div class="site-section">
         <div class="container">
           <div class="row">
-            <div class="title-section mb-5 col-12">
-              <h2 class="text-uppercase">เเพ็คเก็ทสินค้า 500 กรัม</h2>
+            <div class="title-section mb-1 col-12">
+              <h2 class="text-uppercase">เเพ็คเก็ทสินค้า <?= $_GET['pack_size'] ?> กรัม</h2>
             </div>
           </div>
           <div class="row">
-           <div class="site-section" style="width: 100%">
+           <div class="site-section pt-2"  style="width: 100%">
             <div class="container">
               <div class="row mb-5">
                 <div id="box-list-product" class="mb-5 card col-md-8 m-auto">
@@ -199,70 +200,7 @@
     
 
 
-    <footer class="site-footer custom-border-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">OUR SHOP</h3>
-            <a href="#" class="block-6">
-              <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-              <p>Open now  &mdash;  April 20, 2019</p>
-            </a>
-          </div>
-          <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-            <div class="row">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Quick Links</h3>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Sell online</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Shopping cart</a></li>
-                  <li><a href="#">Store builder</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Mobile commerce</a></li>
-                  <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">Website development</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Point of sale</a></li>
-                  <li><a href="#">Hardware</a></li>
-                  <li><a href="#">Software</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
-              <ul class="list-unstyled">
-                <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">n.kanrutai@kkumail.com</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </footer>
+    <?php include("footter.php");?>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
@@ -280,7 +218,7 @@
 
     function add_package(id_pro,name_pro,weight){
       $('#box-list-product').show();
-      if(check_package_size()){
+      if(check_package_size(weight)){
         item = data_package.find(obj => obj.id_pro==id_pro);
         if (item !== undefined){
           item.weight=parseInt(item.weight)+parseInt(weight);
@@ -289,20 +227,21 @@
         }
         package_init();
       }else{
-        alert("เติม");
+        alert("เต็ม");
       }
       console.log(data_package);
     }
 
-    function check_package_size(){
-      packsize=1000;
+    var packsize=parseInt(<?=$_GET['pack_size'];?>);
+    function check_package_size(weight){
+      
       sum_size=0;
       data_package.forEach(json_item => {
         sum_size=sum_size+parseInt(json_item.weight);
       });
-      console.log(sum_size);
-      if(sum_size >= packsize){// over size
-        return false;
+      console.log(packsize+"|"+weight);
+      if(sum_size >= packsize || weight >= packsize){// over size
+        return false; //full
       }else{
         return true;
       }

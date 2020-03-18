@@ -85,7 +85,7 @@
       <div class="custom-border-bottom py-3">
         <div class="container">
           <div class="row">
-            <div class="col-md-12 mb-0"><strong class="text-black">เเก้ไขเมนู</strong> <span class="mx-2 mb-0">/</span> </div>
+            <div class="col-md-12 mb-0"><strong class="text-black">เเก้ไขรายการอาหาร</strong> <span class="mx-2 mb-0">/</span> </div>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@
         <div class="container" style="margin-left: 20px;">
           <div class="row">
             <div class="title-section mb-5 col-12">
-              <h2 class="text-uppercase">เเก้ไข้สถานะการจัดส่ง</h2>
+              <h2 class="text-uppercase">เเก้ไขรายการอาหาร</h2>
             </div>
           </div>
         </div>
@@ -118,12 +118,14 @@
                       <thead>
                         <tr>
                           <th class="product-price">รหัสสินค้า</th>
-                          <th class="product-thumbnail">รูปภาพศินค้า</th>
+                          <th class="product-thumbnail">รูปภาพสินค้า</th>
                           <th class="product-name">ชื่อสินค้า</th> 
                           <th class="product-price">ชื่อเมนู</th>
                           <th class="product-quantity">รูปภาพเมนู</th>
                           <th class="product-total">รหัสเมนู</th>
                           <th class="product-remove">เเก้ไข</th>
+                          <th class="product-remove">ลบ</th>
+
                         </tr>
                       </thead>
                       <?php
@@ -151,7 +153,8 @@
                            <td><?php echo $Menu_name ?></td>
                            <td ><img src="<?php echo $Menu_img ?>" height="200" width="200px" alt="Image" class="img-fluid"></td>
                            <td><?php echo $Menu_id ?></td>
-                           <td><button class=button1 ><a href="edit_detail_to_menu.php?Menu_id=<?php echo $Menu_id ?>">เเก้ไข</a></button></a></td>
+                           <td><a class="btn btn-warning " href="edit_detail_to_menu.php?Menu_id=<?php echo $Menu_id ?>">เเก้ไข</a></td>
+                           <td><a href="delet_menu.php?Menu_id=<?php echo $Menu_id;?>" class="btn btn-danger height-auto btn-sm">X</a></td>
                          </tr>
                          <?php 
                        }
@@ -195,70 +198,7 @@
     
 
 
-    <footer class="site-footer custom-border-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">OUR SHOP</h3>
-            <a href="#" class="block-6">
-              <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-              <p>Open now  &mdash;  April 20, 2019</p>
-            </a>
-          </div>
-          <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-            <div class="row">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Quick Links</h3>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Sell online</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Shopping cart</a></li>
-                  <li><a href="#">Store builder</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Mobile commerce</a></li>
-                  <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">Website development</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Point of sale</a></li>
-                  <li><a href="#">Hardware</a></li>
-                  <li><a href="#">Software</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
-              <ul class="list-unstyled">
-                <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">n.kanrutai@kkumail.com</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </footer>
+  <?php include("footter.php");?>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

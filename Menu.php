@@ -104,7 +104,7 @@ if (!isset($_SESSION)) {
 
           <?php 
           if (isset($_SESSION["ses_userid"])) {?>
-           <a href="#" style="margin-left:1%;" >
+           <a href="edit_profile.php" style="margin-left:1%;" >
             <span class="icon-person"></span>
             <span style="color: #555" >
             <?php } else{ ?>

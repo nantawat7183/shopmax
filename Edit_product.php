@@ -93,12 +93,12 @@
       <div class="site-section" >
         <div class="container">
           <div class="row">
-            <div class="title-section mb-5 col-12">
+            <div class="title-section col-12">
               <h2 class="text-uppercase">เเก้ไขสินค้า</h2>
             </div>
           </div>
           <div class="row">
-           <div class="site-section" style="width: 100%">
+           <div class="site-section bt-2" style="width: 100%">
             <div class="container">
               <div class="row ">
                 <div class="col-md-12">
@@ -125,17 +125,18 @@
 
                         <?php
 
-                        $sql1 = "SELECT * FROM product; ";
+                        $sql1 = "SELECT * FROM product where Pro_type=0 ";
                         $result = mysqli_query($conn,$sql1);
                         while ($row = mysqli_fetch_row($result)) {
+
                          echo "  <td>" . $row['0'] . "</td>";
                          echo "  <td>" . $row['1'] . "</td>";
                          echo "  <td><img style='height: 50px; width: 50px; margin:0px;'class='img-product' src=" . " ' " . $row['6'] . " ' " . "</td>";
                 // echo "  <td>" . $row['2'] ."บาท"." </td>";
                          echo "  <td>" . $row['3'] . "</td>";
                           echo "  <td>" . $row['8'] . ".กรัม</td>";
-                         echo "  <td><button class=button1 ><a href='Edit2_product.php?Pro_id=".$row['0']."'>เเก้ไข</a></button></td>";
-                         echo "  <td><button class=button1 ><a href='delete_to_product.php?Pro_id=".$row['0']."'>ลบ</a></button></td>";
+                         echo "  <td><a  class='btn btn-warning' href='Edit2_product.php?Pro_id=".$row['0']."'>เเก้ไข</a></td>";
+                         echo "  <td><a  class='btn bg-danger' href='delete_to_product.php?Pro_id=".$row['0']."'>ลบ</a></button></td>";
                          echo "</tr>";
 
                        }
@@ -176,71 +177,7 @@
 
     
 
-
-    <footer class="site-footer custom-border-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">OUR SHOP</h3>
-            <a href="#" class="block-6">
-              <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-              <p>Open now  &mdash;  April 20, 2019</p>
-            </a>
-          </div>
-          <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-            <div class="row">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Quick Links</h3>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Sell online</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Shopping cart</a></li>
-                  <li><a href="#">Store builder</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Mobile commerce</a></li>
-                  <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">Website development</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Point of sale</a></li>
-                  <li><a href="#">Hardware</a></li>
-                  <li><a href="#">Software</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
-              <ul class="list-unstyled">
-                <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">n.kanrutai@kkumail.com</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </footer>
+ <?php include("footter.php");?>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

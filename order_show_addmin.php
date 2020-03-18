@@ -238,46 +238,55 @@
                                 <table class="table table-bordered table-hover">
                                   <thead>
                                     <tr style="padding: 2px">
-                                      <th class="product-thumbnail">รูปภาพ</th>
-                                      <th class="product-name">ชื่อสินค้า</th> 
-                                      <th class="product-price">ราคา</th>
-                                      <th class="product-quantity">จำนวน</th>
-                                    </tr>
-                                  </thead>
-                                  <?php
-                                  $Total = 0;
-                                  $SumTotal = 0;
-                                  $SubTotle = 0; 
-                                  $strSQL_productlist = "SELECT * FROM `order_detail` WHERE Or_id=".$objResult['Or_id'];
-                                  $objQuery_productlist = mysqli_query($conn,$strSQL_productlist)  or die(mysql_error());
-                                  while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
-                                    $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
-                                    $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
-                                    $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
-                                    $Total =  $Total+($objResult_productlist["Qty"] * $objResult_getProduct["Pro_price"]);
-                                    $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
-                                    ?>
-                                    <tr>
-                                      <td >
-                                       <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
-                                     </td>
+                                     <th class="product-price">รหัสสินค้า</th>
+                                     <th class="product-name">ชื่อสินค้า</th>
+                                     <th class="product-name">รูปภาพ</th> 
+                                     <th class="product-price">ราคา</th>
+                                     <th class="product-price">น้ำหนัก</th>
+                                     <th class="product-quantity">จำนวน</th>
+                                     <th class="product-total">ราคารวม</th>
+                                   </tr>
+                                 </thead>
+                                 <?php
+                                 $Total = 0;
+                                 $SumTotle = 0;
+                                 $SubTotle = 0; 
+                                 $strSQL_productlist = "SELECT * FROM `order_detail` WHERE Or_id=".$objResult['Or_id'];
+                                 $objQuery_productlist = mysqli_query($conn,$strSQL_productlist)  or die(mysql_error());
+                                 while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
+                                  $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
+                                  $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
+                                  $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
+                                  $Total =  $objResult_productlist["Qty"] * ($objResult_getProduct["Pro_price"] * ($objResult_productlist["weight"]/100));
+                                  $SumTotle = $SumTotle +  $Total;
+                                  $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
+                                  ?>
+                                  <tr>
+                                    <td><?php echo $objResult_getProduct["Pro_id"]?></td>
+                                    <td >
+                                     <?php echo $objResult_getProduct["Pro_name"];?> </td>
                                      <td >
-                                       <?php echo $objResult_getProduct["Pro_name"];?>
-                                     </td>
-                                     <td> <?php echo $objResult_getProduct["Pro_price"];?></td>
-                                     <td><?php echo $objResult_productlist["Qty"];?></td>
-                                   </td>
-                                 </tr>
-                               </tbody>
-                             <?php }?>
-                           </table> 
-                           <div class="col-md-12text-right">
+                                       <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
+                                     </td>                                  
+                                     <td> <?php echo $objResult_getProduct["Pro_price"];if($objResult_getProduct["Pro_type"]==0){
+                                      echo " บาท/100กรัม";
+                                    }else{ echo "บาท/ชุด";}
+                                    ?></td>
+                                    <td><?php echo $objResult_productlist["weight"];?></td>
+                                    <td><?php echo $objResult_productlist["Qty"];?></td>
+                                    <td><?php echo $Total; ?></td>
+                                
+                                </tr>
+                              </tbody>
+                            <?php }?>
+                          </table> 
+                          <div class="col-md-12text-right">
                             <label for="Pro_id" class="text-black">จำนวนสินค้า <span class="text-danger"></span></label>
-                            <strong class="text-black"><?php echo $SubTotle ?>กิโลกรัม</strong>
+                            <strong class="text-black"><?php echo number_format($SubTotle);?>.รายการ</strong>
                           </div>
                           <div class="col-md-12text-right">
-                            <label for="Pro_id" class="text-black">ราคารวม <span class="text-danger"></span></label>
-                            <strong class="text-black"><?php echo $Total ?>กิโลกรัม</strong>
+                            <label for="Pro_id" class="text-black"> ราคาสุทธิ <span class="text-danger"></span></label>
+                            <strong class="text-black"><?php echo $SumTotle ?>บาท</strong>
                           </div>
                         </div>
                       </div>
@@ -304,71 +313,7 @@
 
 
 
-
-<footer class="site-footer custom-border-top">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-        <h3 class="footer-heading mb-4">OUR SHOP</h3>
-        <a href="#" class="block-6">
-          <img src="images/pic.png" alt="Image placeholder" class="img-fluid rounded mb-4">
-          <h3 class="font-weight-light  mb-0">A quality vegetable shop that you can't find anywhere else.</h3>
-          <p>Open now  &mdash;  April 20, 2019</p>
-        </a>
-      </div>
-      <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="footer-heading mb-4">Quick Links</h3>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <ul class="list-unstyled">
-              <li><a href="#">Sell online</a></li>
-              <li><a href="#">Features</a></li>
-              <li><a href="#">Shopping cart</a></li>
-              <li><a href="#">Store builder</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <ul class="list-unstyled">
-              <li><a href="#">Mobile commerce</a></li>
-              <li><a href="#">Dropshipping</a></li>
-              <li><a href="#">Website development</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <ul class="list-unstyled">
-              <li><a href="#">Point of sale</a></li>
-              <li><a href="#">Hardware</a></li>
-              <li><a href="#">Software</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="block-5 mb-5">
-          <h3 class="footer-heading mb-4">Contact Info</h3>
-          <ul class="list-unstyled">
-            <li class="address">123/2001 Information Technology, Department of Computer Science, Faculty of Science, KKU</li>
-            <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-            <li class="email">n.kanrutai@kkumail.com</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-5 mt-5 text-center">
-      <div class="col-md-12">
-        <p>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script>document.write(new Date().getFullYear());</script> Khon Kaen University
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
-      </div>
-
-    </div>
-  </div>
-</footer>
+ <?php include("footter.php");?>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

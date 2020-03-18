@@ -12,9 +12,9 @@
 <body>
   <nav class="navbar navbar-light bg-warning">
     <a class="navbar-brand"></a>
-    <form class="form-inline" action="seach_pro.php?Pro_id=<?php echo $Pro_name ?>" method="get">
-      <input class="form-control mr-sm-2" type="search" name="seach" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <!-- <form class="form-inline" action="seach_pro.php?Pro_id=<?php echo $Pro_name ?>" method="get"> -->
+    <!--   <input class="form-control mr-sm-2" type="search" name="seach" placeholder="Search" aria-label="Search"> -->
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
     </form>
   </nav>
 
