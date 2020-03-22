@@ -27,6 +27,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
   <html lang="en">
   <head>
     <title>ShopVegetable &mdash; Vegetable Shop Online</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -47,9 +48,50 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-
     
+    <style type="text/css">
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+      }
+
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+      }
+
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+    </style>    
     
   </head>
   <body>
@@ -154,7 +196,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
                 <?php 
                 if (isset($_SESSION["ses_userid"])) {
                  ?>
-                 <button class="btn  btn-lg btn-block" style="background-color: #ffc107" onclick="window.location='order.php?Pro_id=<?php echo $Pro_id?>'"/>เพิ่มในตะกร้า</button>
+                 <button class="btn  btn-lg btn-block" style="background-color: #ffc107" onclick="add_cart('<?=$Pro_id?>')"/>เพิ่มในตะกร้า</button>
                <?php }else {?>
                  <button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #ffc107" data-toggle="modal" data-target="#exampleModalCenter"/>เพิ่มในตะกร้า</button>  <!--  onclick="window.location='login.php'" -->
                <?php }?>
@@ -254,6 +296,7 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
           <?php include("footter.php");?>
         </div>
+         <div id="snackbar">เพิ่มสินค้าสำเร็จ</div>
 
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery-ui.js"></script>
@@ -265,5 +308,29 @@ while ($objResult = mysqli_fetch_array($objQuery)){
 
         <script src="js/main.js"></script>
 
+
+<script type="text/javascript">
+  function add_cart(pro_id){
+    url="order.php?Pro_id=<?php echo $objResult["Pro_id"];?>";
+    $.ajax({
+      url: url,
+      type: 'GET',
+      data: {'Pro_id':pro_id},
+      success: function(res) {
+        pro_qry=$('#cart_qty').html();
+
+        // location.reload();
+        $('#cart_qty').html(parseInt(pro_qry)+1);
+        toast();
+      }
+    });
+  }
+
+  function toast() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+</script>
       </body>
       </html>

@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
   <title>ShopVegetable &mdash; Vegetable Shop Online</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -77,13 +78,13 @@ while ($objResult = mysqli_fetch_array($objQuery)){
     $Pro_img = $objResult["Pro_img"];
     ?>
 
-    <div class="site-section" style="padding-bottom: 40px; padding-top: 40px">
+    <div class="site-section" style="padding-bottom: 20px; padding-top: 20px">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black" ><?php echo $Pro_name ?></h2>
+           
           </div>
-          <div class=" col-lg-5 col-md-6 ">
+          <div class=" col-lg-3 col-md-6 ">
 
             <form action="#" method="post">
 
@@ -100,8 +101,9 @@ while ($objResult = mysqli_fetch_array($objQuery)){
           </form>
         </div>
 
-        <div class="col-md-7 ml-auto">
+        <div class="col-md-9 ml-auto">
           <div class="p-4 border mb-3">
+             <h4 class="h3 mb-3 text-black" ><?php echo $Pro_name ?></h4>
             <span class="d-block text-primary h6 text-uppercase">สรรพคุณ</span>
             <p class="mb-0" ><?php echo $Pro_property ?></p>
           </div>

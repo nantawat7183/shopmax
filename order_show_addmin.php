@@ -229,7 +229,7 @@
                                 $result_payment=mysqli_fetch_array($objQuery_payment);
                                 if($objResult['status']!= 0){
                                   ?>
-                                  <a href="edit_to_status.php?Pay_id=<?=$result_payment['Pay_id']?>&Or_id=<?=$objResult['Or_id']?>" class="btn btn-sm btn-outline-primary">การชำระเงิน</a>
+                                  <a href="edit_to_status.php?Pay_id=<?=$result_payment['Pay_id']?>&Or_id=<?=$objResult['Or_id']?>" class="btn btn-sm btn-outline-primary" style="font-size: 15px" >การชำระเงิน</a>
                                 <?php } ?>
                               </div>
                             </div>

@@ -24,7 +24,8 @@ if (!isset($_SESSION)) {
 
   <div class="container">
     <div class="d-flex align-items-center justify-content-between">
-     <img src="images/logo.png" width="16%">
+    <a href="index.php"> <img src="images/logo.png" width="160"></a>
+
          <!--  <div class="logo">
             <div class="site-logo">
               <a href="index.php" >  

@@ -33,7 +33,7 @@ for ($i=0; $i<sizeof($_GET["Pro_id"]); $i++) {
 			$_SESSION["strWeight"][$intNewLine] = $wieght;
 		}
 
-		header("location:shop.php");
+		header("location:cart.php");
 
 	}
 }

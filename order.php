@@ -10,7 +10,7 @@ if(!isset($_SESSION["intLine"]))
 	 $_SESSION["strQty"][1] = 1;
     $_SESSION["strWeight"][1]=500;
 
-	 header("location:cart.php");
+	 header("location:index.php");
 }
 else
 
@@ -31,7 +31,7 @@ else
         $_SESSION["strWeight"][$intNewLine] = 500;
 	}
 	
-	 header("location:shop.php");
+	 header("location:index.php");
 
 }
 ?>

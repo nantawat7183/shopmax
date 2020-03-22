@@ -57,8 +57,8 @@ echo "<!DOCTYPE html>
 		$time = date("H:i:s");
 
 		
-	echo "<meta http-equiv='refresh' content='1;URL=order_show_addmin.php'>";
-	echo "</html>";
+	// echo "<meta http-equiv='refresh' content='1;URL=order_show_addmin.php'>";
+	header("Location: order_show_addmin.php");
 }
 else
 {

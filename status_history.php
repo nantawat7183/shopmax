@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
   <title>ShopVegetable &mdash; Vegetable Shop Online</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -129,7 +130,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="title-section mb-5">
-                <h2 class="h3 mb-3 text-black">สถานะสินค้า</h2>
+                <h2 class="h3 mb-3 text-black">ประวัติการสั่งซื้อ</h2>
               </div>
             </div>
             <div class="col-md-12">
@@ -145,7 +146,8 @@
                     $status_flag='c0';
                     $status="0";
                     if(mysqli_num_rows($objQuery)== 0){
-                      echo "ไม่พบรายการสินค้า"; exit();
+
+                      echo "<center>ไม่พบรายการสั่งซื้อ</center>"; exit();
                     }
                     while($objResult = mysqli_fetch_array($objQuery)){
                       if($objResult['status']==0){

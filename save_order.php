@@ -64,20 +64,20 @@ try {
    );
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'nantawat7183@gmail.com';                     // SMTP username
-    $mail->Password   = '0992087183';                               // SMTP password
+    $mail->Username   = 'shopmaxshopping123@gmail.com';                     // SMTP username
+    $mail->Password   = '0972075037';                               // SMTP password
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->SMTPSecure = "tls";
     $mail->Port       = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('nantawat7183@gmail.com', 'Shopmax');
+    $mail->setFrom('shopmaxshopping123@gmail.com', 'Shopmax');
     $mail->addAddress($adress, $_POST["textName"]);     // Add a recipient
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Here is the subject';
-    $html_content = "<h2><b>เรียน ".$_POST["textName"]."</b></h2><br> คุณได้สั่งซี้อสินค้าจากทาง Shopmax<br> รหัสสั่งซื้อ : <a href='localhost/shopmax/status.php?order_id=".$or_id."' >".$or_id."</a><br><br>
+    $html_content = "<h2><b>เรียน ".$_POST["textName"]."</b></h2><br> คุณได้สั่งซี้อสินค้าจากทาง Shopmax<br> รหัสสั่งซื้อ : <a href='http://jarlod.tk/shopmax/status.php?order_id=".$or_id."' >".$or_id."</a><br><br>
     <table border='1' width='500px'>
     <thead>
     <tr>
@@ -131,7 +131,7 @@ try {
     </table>
 
     " ;
-     $html_content = $html_content."<h3><a href='localhost/shopmax/payment2.php?Or_id=".$or_id."' >ชำระเงิน</a></h3><br><h3>ชื่อ:".$_POST["textName"]." </h3>ที่อยู่ในการจัดส่ง:".$_POST["textAddress"]."</h3>";
+     $html_content = $html_content."<h3>ทำการชำระเงิน:<a href='http://jarlod.tk/shopmax/payment2.php?Or_id={$or_id}' >ชำระเงิน</a></h3><br><h3>ชื่อ:".$_POST["textName"]." </h3>ที่อยู่ในการจัดส่ง:".$_POST["textAddress"]."<br>g[เบอร์โทรศัพท์:".$_POST["textU_tel"]."";
     $mail->Body = $html_content;
 
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

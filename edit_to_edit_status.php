@@ -58,14 +58,14 @@ try {
    );
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'nantawat7183@gmail.com';                     // SMTP username
-    $mail->Password   = '0992087183';                               // SMTP password
+     $mail->Username   = 'shopmaxshopping123@gmail.com';                     // SMTP username
+    $mail->Password   = '0972075037';                               // SMTP password
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->SMTPSecure = "tls";
     $mail->Port       = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('nantawat7183@gmail.com', 'Shopmax');
+    $mail->setFrom('shopmaxshopping123@gmail.com', 'Shopmax');
     $mail->addAddress($Or_email);     // Add a recipient
 
     // Content

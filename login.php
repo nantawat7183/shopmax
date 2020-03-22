@@ -5,6 +5,8 @@
 <html lang="en">
 <head>
   <title>ShopVegetable &mdash; Vegetable Shop Online</title>
+   <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico" />
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -102,7 +104,7 @@
                   <div class="form-group row">
                     <div class="col-md-12">
                       <label for="email" class="text-black">เบอร์โทรศัพท์ <span class="text-danger">*</span></label>
-                      <input type="tel" class="form-control" id="tel" name="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="ตัวอย่าง ***-***-****">
+                      <input type="tel" class="form-control" id="tel" name="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="ตัวอย่าง XXX-XXX-XXXX">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -127,7 +129,7 @@
 
              <form action="check_login.php" method="post">
               <div class="p-3 p-lg-5 border">
-                <h2 class="h3 mb-3 text-black">ล็อกอิน</h2>
+                <h2 class="h3 mb-3 text-black">เข้าสู่ระบบ</h2>
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="email" class="text-black">อีเมลล์ <span class="text-danger" >*</span></label>

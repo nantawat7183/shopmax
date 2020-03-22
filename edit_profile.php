@@ -12,6 +12,8 @@
   <html lang="en">
   <head>
     <title>ShopVegetable &mdash; Vegetable Shop Online</title>
+     <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico" />
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -171,6 +173,8 @@
         </div>
       </div>
     </div>
+  </div>
+
 
     <!-- popup -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -213,6 +217,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <br><br>
     <!-- ------- -->
 
 
