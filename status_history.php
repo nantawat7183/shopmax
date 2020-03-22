@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <title>ShopVegetable &mdash; Vegetable Shop Online</title>
-    <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -196,18 +196,18 @@
                          <?php 
                          if($objResult['status']==0){ ?> 
                           <a href="payment2.php?Or_id=<?php echo $objResult['Or_id']; ?>" >ชำระเงิน</a>
-                             <?php  }?>
+                        <?php  }?>
 
-                         <?php 
-                         if($objResult['status']==4){ ?>
+                        <?php 
+                        if($objResult['status']==4){ ?>
 
                           <h6> หมายเลขติดตามพัสดุ: <?php echo $objResult['Status_ems'] ?>      <a href='https://www.parcelmonitor.com/th-track-thailand-post/'>กรอกโค้ด</a></h6>
 
-                         
+
 
                         <?php  }?>
                         <br><br>
-                       
+
                         
 
 
@@ -246,63 +246,78 @@
                         <table class="table table-bordered table-hover">
                           <thead>
                             <tr style="padding: 2px">
-                              <th class="product-thumbnail">รูปภาพ</th>
+                              <th class="product-price">รหัสสินค้า</th>
+                              <th class="product-price">รูปภาพ</th>
                               <th class="product-name">ชื่อสินค้า</th> 
                               <th class="product-price">ราคา</th>
+                              <th class="product-price">น้ำหนัก</th>
                               <th class="product-quantity">จำนวน</th>
+                              <th class="product-total">ราคารวม</th>
+
                             </tr>
                           </thead>
-                          <?php
-                          $Total = 0;
-                          $SumTotal = 0;
-                          $SubTotle = 0; 
+                          <tbody>
+                           <?php
+                           $Total = 0;
+                           $SumTotle = 0;
+                           $SubTotle = 0;
+                           $strSQL1 = "SELECT * FROM order_detail WHERE Or_id = '".$objResult['Or_id']."' ";
+                           $objQuery_productlist = mysqli_query($conn,$strSQL1);
 
-                          $strSQL_productlist = "SELECT * FROM `order_detail` WHERE Or_id=".$objResult['Or_id'];
-                          $objQuery_productlist = mysqli_query($conn,$strSQL_productlist)  or die(mysql_error());
-                          while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
+                           while($objResult_productlist = mysqli_fetch_array($objQuery_productlist)){
                             $strSQL_getProduct = "SELECT * FROM `product` WHERE Pro_id=".$objResult_productlist['Pro_id'];
                             $objQuery_getProduct = mysqli_query($conn,$strSQL_getProduct)  or die(mysql_error());
                             $objResult_getProduct = mysqli_fetch_array($objQuery_getProduct);
-                            $Total =  $Total+($objResult_productlist["Qty"] * $objResult_getProduct["Pro_price"]);
+                            $Total =  $objResult_productlist["Qty"] * ($objResult_getProduct["Pro_price"] * ($objResult_productlist["weight"]/100));
+                            $SumTotle = $SumTotle +  $Total;
                             $SubTotle = $SubTotle +  $objResult_productlist["Qty"];
-
                             ?>
+
                             <tr>
+                              <td>
+                                <?php echo $objResult_getProduct["Pro_id"];?>
+                              </td>
+                              <td><img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px"></td>
+
                               <td >
-                               <img src="<?php echo $objResult_getProduct["Pro_img"];?>" alt="Image" class="img-fluid" width="50px">
-                             </td>
-                             <td >
-                               <?php echo $objResult_getProduct["Pro_name"];?>
-                             </td>
-                             <td> <?php echo $objResult_getProduct["Pro_price"];?></td>
-                             <td><?php echo $objResult_productlist["Qty"];?></td>
-                           </td>
-                         </tr>
-                       </tbody>
-                       <?php                           
-                     }
-                     ?>
-                   </table>
-                   <div class="col-md-12text-right">
-                    <label for="Pro_id" class="text-black">จำนวนสินค้า <span class="text-danger"></span></label>
-                    <strong class="text-black"><?php echo $SubTotle ?>.รายการ</strong>
+                                <?php echo $objResult_getProduct["Pro_name"];?>
+                              </td>
+                              <td><?php echo $objResult_getProduct["Pro_price"]; if($objResult_getProduct["Pro_type"]==0){
+                                echo " บาท/100กรัม";
+                              }else{ echo "บาท/ชุด";}
+                              ?></td>
+                              <td><?php echo $objResult_productlist["weight"];?></td>
+                              <td><?php echo $objResult_productlist["Qty"] ?></td>
+                              <td><?php echo $Total; ?></td>
+
+                            </tr>
+
+
+                            <?php
+
+                          }
+                          ?>
+                        </table>
+                        <div class="col-md-12text-right">
+                          <label for="Pro_id" class="text-black">จำนวนสินค้า <span class="text-danger"></span></label>
+                          <strong class="text-black"><?php echo number_format($SubTotle);?>.รายการ</strong>
+                        </div>
+                        <div class="col-md-12text-right">
+                          <label for="Pro_id" class="text-black">ราคารวม <span class="text-danger"></span></label>
+                          <strong class="text-black"><?php echo $SumTotle ;?>.บาท</strong>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-12text-right">
-                    <label for="Pro_id" class="text-black">ราคารวม <span class="text-danger"></span></label>
-                    <strong class="text-black"><?php echo $Total ?>.บาท</strong>
-                  </div>
-                </div>
+                  <hr>
+                <?php } ?>                 
               </div>
             </div>
-            <hr>
-          <?php } ?>                 
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
 
 
 
@@ -312,7 +327,7 @@
 
 
 
- <?php include("footter.php");?>
+  <?php include("footter.php");?>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

@@ -83,7 +83,6 @@
                     $Total = 0;
                     $SumTotle = 0;
                     $SubTotle = 0;
-
                     $strSQL1 = "SELECT * FROM order_detail WHERE Or_id = '".$_GET["Or_id"]."' ";
                     $objQuery_productlist = mysqli_query($conn,$strSQL1);
 

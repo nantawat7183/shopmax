@@ -109,7 +109,7 @@
       <div class="bg-light py-3">
         <div class="container">
           <div class="row">
-            <div class="col-md-12 mb-0"><a href="index.php">หน้าหลัก</a> <span class="mx-2 mb-0">/</div>
+            <div class="col-md-12 mb-0"><a href="index.php">หน้าหลัก</a></div>
             </div>
           </div>
         </div>

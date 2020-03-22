@@ -66,7 +66,7 @@ if (!isset($_SESSION)) {
                           <div class="form-group">
                             <span style="color:#9E9C97">กรุณากรอกรหัสการสั่งซื้อของคุณ</span><br><br>
                             <input type="text" name="order_id" class="form-control form-control-sm" required><br>
-                            <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;" >GO</button>
+                            <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;" >ยืนยัน</button>
                           </div>
                         </form>
                       </div>
