@@ -131,7 +131,7 @@ try {
     </table>
 
     " ;
-     $html_content = $html_content."<h3>ทำการชำระเงิน:<a href='http://jarlod.tk/shopmax/payment2.php?Or_id={$or_id}' >ชำระเงิน</a></h3><br><h3>ชื่อ:".$_POST["textName"]." </h3>ที่อยู่ในการจัดส่ง:".$_POST["textAddress"]."<br>g[เบอร์โทรศัพท์:".$_POST["textU_tel"]."";
+     $html_content = $html_content."<h3>ทำการชำระเงิน:<a href='http://jarlod.tk/shopmax/payment2.php?Or_id={$or_id}' >ชำระเงิน</a></h3><br><h3>ชื่อ:".$_POST["textName"]." </h3>ที่อยู่ในการจัดส่ง:".$_POST["textAddress"]."<br>เบอร์โทรศัพท์:".$_POST["textU_tel"]."";
     $mail->Body = $html_content;
 
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
