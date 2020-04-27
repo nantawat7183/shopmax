@@ -130,7 +130,7 @@ if (!isset($_SESSION)) {
               $status = $objResult["status"];
               $full =  $fname." ".$lname." ".$status;
             }
-            echo $full;
+            echo $full . 5555;
           }
           ?>
         </span>

@@ -304,20 +304,24 @@
 
 <script type="text/javascript">
   function add_cart(pro_id){
-    url="order.php?Pro_id=<?php echo $objResult["Pro_id"];?>";
+    url="order.php";
     $.ajax({
       url: url,
       type: 'GET',
       data: {'Pro_id':pro_id},
       success: function(res) {
-        pro_qry=$('#cart_qty').html();
-
-        // location.reload();
-        $('#cart_qty').html(parseInt(pro_qry)+1);
-        toast();
+        if(res == "fail"){
+          alert("สินค้าหมด");
+        }else{
+          pro_qry=$('#cart_qty').html();
+          // location.reload();
+          $('#cart_qty').html(parseInt(pro_qry)+1);
+          toast();  
+        }
       }
     });
   }
+  
 
   function toast() {
     var x = document.getElementById("snackbar");

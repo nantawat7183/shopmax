@@ -317,11 +317,16 @@ while ($objResult = mysqli_fetch_array($objQuery)){
       type: 'GET',
       data: {'Pro_id':pro_id},
       success: function(res) {
-        pro_qry=$('#cart_qty').html();
-
-        // location.reload();
-        $('#cart_qty').html(parseInt(pro_qry)+1);
-        toast();
+        console.log(res);
+        if(res == "fail"){
+          alert("สินค้าหมด");
+        }else{
+          pro_qry=$('#cart_qty').html();
+          // location.reload();
+          $('#cart_qty').html(parseInt(pro_qry)+1);
+          toast();  
+        }
+        
       }
     });
   }
